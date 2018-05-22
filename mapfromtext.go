@@ -1,4 +1,4 @@
-package flag // import "github.com/davidwalter0/go-cfg/flag"
+package flag // import "github.com/davidwalter0/go-flag"
 
 import (
 	"fmt"
