@@ -513,19 +513,29 @@ func UnquoteUsage(flag *Flag) (name string, usage string) {
 // the global function PrintDefaults for more information.
 func (f *FlagSet) PrintDefaults() {
 	f.VisitAll(func(flag *Flag) {
-		s := fmt.Sprintf("  -%s", flag.Name) // Two spaces before -; see next two comments.
+		var s string
+		if !SupressFlagUsageMsg {
+			s = fmt.Sprintf("  -%s", flag.Name) // Two spaces before -; see next two comments.
+		} else {
+			s += "  "
+		}
+		// name is type name, usage is flag usage argument
 		name, usage := UnquoteUsage(flag)
-		if len(name) > 0 {
+		if len(name) > 0 && !SupressFlagUsageMsg {
 			s += " " + name
 		}
 		// Boolean flags of one ASCII letter are so common we
 		// treat them specially, putting their usage on the same line.
 		if len(s) <= 4 { // space, space, '-', 'x'.
-			s += "\t"
+			if !SupressFlagUsageMsg {
+				s += "\t"
+			}
 		} else {
 			// Four spaces before the tab triggers good alignment
 			// for both 4- and 8-space tab stops.
-			s += "\n    \t"
+			if !SupressFlagUsageMsg {
+				s += "\n    \t"
+			}
 		}
 		s += usage
 		if !isZeroValue(flag, flag.DefValue) {
@@ -1039,12 +1049,33 @@ func Parsed() bool {
 // methods of CommandLine.
 var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
 
+// SupressFlagUsageMsg suppress flag names in usage when the
+// environment variable SUPPRESS_FLAG_USAGE_MSG is set one of the
+// following boolean true values: 1,T,t,True,TRUE or true
+
+var SupressFlagUsageMsg = false
+
+// SupressFlagUsageMsgBools is the map of booleans to accept from
+// the environment variable SUPPRESS_FLAG_USAGE_MSG
+// 1,T,t,True,TRUE or true
+var SupressFlagUsageMsgBools = map[string]bool{
+	// 1, 0, t, f, T, F, true, false, TRUE, FALSE, True, False
+	"1":    true,
+	"T":    true,
+	"TRUE": true,
+	"True": true,
+	"t":    true,
+	"true": true,
+}
+
 func init() {
 	// Override generic FlagSet default Usage with call to global Usage.
 	// Note: This is not CommandLine.Usage = Usage,
 	// because we want any eventual call to use any updated value of Usage,
 	// not the value it has when this line is run.
 	CommandLine.Usage = commandLineUsage
+	var value = os.Getenv("SUPPRESS_FLAG_USAGE_MSG")
+	_, SupressFlagUsageMsg = SupressFlagUsageMsgBools[value]
 }
 
 func commandLineUsage() {
