@@ -29,29 +29,29 @@ func (slc *{{.MapSetterTypeNameValue}}) String() string {
 // {{.MapSetterTypeNameValue}}Var defines an map flag with specified name,
 // default value, and usage string.  The argument p points to an map
 // variable in which to store the value of the flag.
-func (f *FlagSet) {{.MapSetterTypeName}}Var(p *{{.MapSetterTypeNameValue}}, name string, value {{.MapSetterTypeNameValue}}, usage string) {
-	f.Var(new{{.MapSetterTypeNameValue}}(value, p), name, usage)
+func (f *FlagSet) {{.MapSetterTypeName}}Var(p *{{.MapSetterTypeNameValue}}, name string, value {{.MapSetterTypeNameValue}}, usage string, required, isset bool) {
+	f.Var(new{{.MapSetterTypeNameValue}}(value, p), name, usage, required, isset)
 }
 
 // {{.MapSetterTypeNameValue}}Var defines an map flag with specified name,
 // default value, and usage string.  The argument p points to an map
 // variable in which to store the value of the flag.
-func {{.MapSetterTypeName}}Var(p *{{.MapSetterTypeNameValue}}, name string, value {{.MapSetterTypeNameValue}}, usage string) {
-	CommandLine.Var(new{{.MapSetterTypeNameValue}}(value, p), name, usage)
+func {{.MapSetterTypeName}}Var(p *{{.MapSetterTypeNameValue}}, name string, value {{.MapSetterTypeNameValue}}, usage string, required, isset bool) {
+	CommandLine.Var(new{{.MapSetterTypeNameValue}}(value, p), name, usage, required, isset)
 }
 
 // {{.MapSetterTypeNameValue}} defines an map flag with specified name,
 // default value, and usage string.  The return value is the address
 // of an map variable that stores the value of the flag.
-func (f *FlagSet) {{.MapSetterTypeName}}(name string, value {{.MapSetterTypeNameValue}}, usage string) *{{.MapSetterTypeNameValue}} {
+func (f *FlagSet) {{.MapSetterTypeName}}(name string, value {{.MapSetterTypeNameValue}}, usage string, required, isset bool) *{{.MapSetterTypeNameValue}} {
 	p := new({{.MapSetterTypeNameValue}})
-	f.{{.MapSetterTypeName}}Var(p, name, value, usage)
+	f.{{.MapSetterTypeName}}Var(p, name, value, usage, required, isset)
 	return p
 }
 
 // {{.MapSetterTypeNameValue}} defines an map flag with specified name,
 // default value, and usage string.  The return value is the address
 // of an map variable that stores the value of the flag.
-func {{.MapSetterTypeName}}(name string, value {{.MapSetterTypeNameValue}}, usage string) *{{.MapSetterTypeNameValue}} {
-	return CommandLine.{{.MapSetterTypeName}}(name, value, usage)
+func {{.MapSetterTypeName}}(name string, value {{.MapSetterTypeNameValue}}, usage string, required, isset bool) *{{.MapSetterTypeNameValue}} {
+	return CommandLine.{{.MapSetterTypeName}}(name, value, usage, required, isset)
 }
