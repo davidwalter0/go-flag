@@ -17,7 +17,7 @@ func NonFlagOSArgs(skip int) []string {
 	var i = 1
 	// pre-read flag '-' and save non-flag and multicall args
 	for ; i < len(os.Args); i++ {
-		isFlag := len(os.Args[i]) > 1 && os.Args[i][1] != '-'
+		isFlag := len(os.Args[i]) > 1 && os.Args[i][1] == '-'
 		if isFlag {
 			break
 		}
