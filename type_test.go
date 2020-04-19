@@ -6,11 +6,12 @@ import (
 	"testing"
 )
 
-func init() {
+var _ = func() bool {
 	if false {
 		fmt.Println("")
 	}
-}
+	return true
+}()
 
 func TestParseSliceDuration(t *testing.T) {
 	T := reflect.TypeOf(sliceDurationValue{}).Elem()

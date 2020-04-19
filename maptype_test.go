@@ -5,11 +5,12 @@ import (
 	"testing"
 )
 
-func init() {
+var _ = func() bool {
 	if false {
 		fmt.Println("")
 	}
-}
+	return true
+}()
 
 func TestParseMapDurationDuration(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationDurationValue{}).Elem()
