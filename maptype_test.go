@@ -5,16 +5,17 @@ import (
 	"testing"
 )
 
-func init() {
+var _ = func() bool {
 	if false {
 		fmt.Println("")
 	}
-}
+	return true
+}()
 
 func TestParseMapDurationDuration(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationDurationValue{}).Elem()
 	var varMapDurationDuration = new(mapDurationDurationValue)
-	Var(varMapDurationDuration, "varMapDurationDuration", "Use mapDurationDuration")
+	Var(varMapDurationDuration, "varMapDurationDuration", "Use mapDurationDuration", false, false)
 	varMapDurationDuration.Set("1h2m3s:1h2m3s")
 	if varMapDurationDuration.String() != "1h2m3s:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapDurationDuration,
@@ -26,7 +27,7 @@ func TestParseMapDurationDuration(t *testing.T) {
 func TestParseMapDurationInt(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationIntValue{}).Elem()
 	var varMapDurationInt = new(mapDurationIntValue)
-	Var(varMapDurationInt, "varMapDurationInt", "Use mapDurationInt")
+	Var(varMapDurationInt, "varMapDurationInt", "Use mapDurationInt", false, false)
 	varMapDurationInt.Set("1h2m3s:-1")
 	if varMapDurationInt.String() != "1h2m3s:-1" {
 		t.Fatalf("%v %v %v", varMapDurationInt,
@@ -38,7 +39,7 @@ func TestParseMapDurationInt(t *testing.T) {
 func TestParseMapDurationInt8(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationInt8Value{}).Elem()
 	var varMapDurationInt8 = new(mapDurationInt8Value)
-	Var(varMapDurationInt8, "varMapDurationInt8", "Use mapDurationInt8")
+	Var(varMapDurationInt8, "varMapDurationInt8", "Use mapDurationInt8", false, false)
 	varMapDurationInt8.Set("1h2m3s:-1")
 	if varMapDurationInt8.String() != "1h2m3s:-1" {
 		t.Fatalf("%v %v %v", varMapDurationInt8,
@@ -50,7 +51,7 @@ func TestParseMapDurationInt8(t *testing.T) {
 func TestParseMapDurationInt16(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationInt16Value{}).Elem()
 	var varMapDurationInt16 = new(mapDurationInt16Value)
-	Var(varMapDurationInt16, "varMapDurationInt16", "Use mapDurationInt16")
+	Var(varMapDurationInt16, "varMapDurationInt16", "Use mapDurationInt16", false, false)
 	varMapDurationInt16.Set("1h2m3s:-1")
 	if varMapDurationInt16.String() != "1h2m3s:-1" {
 		t.Fatalf("%v %v %v", varMapDurationInt16,
@@ -62,7 +63,7 @@ func TestParseMapDurationInt16(t *testing.T) {
 func TestParseMapDurationInt32(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationInt32Value{}).Elem()
 	var varMapDurationInt32 = new(mapDurationInt32Value)
-	Var(varMapDurationInt32, "varMapDurationInt32", "Use mapDurationInt32")
+	Var(varMapDurationInt32, "varMapDurationInt32", "Use mapDurationInt32", false, false)
 	varMapDurationInt32.Set("1h2m3s:-1")
 	if varMapDurationInt32.String() != "1h2m3s:-1" {
 		t.Fatalf("%v %v %v", varMapDurationInt32,
@@ -74,7 +75,7 @@ func TestParseMapDurationInt32(t *testing.T) {
 func TestParseMapDurationInt64(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationInt64Value{}).Elem()
 	var varMapDurationInt64 = new(mapDurationInt64Value)
-	Var(varMapDurationInt64, "varMapDurationInt64", "Use mapDurationInt64")
+	Var(varMapDurationInt64, "varMapDurationInt64", "Use mapDurationInt64", false, false)
 	varMapDurationInt64.Set("1h2m3s:-1")
 	if varMapDurationInt64.String() != "1h2m3s:-1" {
 		t.Fatalf("%v %v %v", varMapDurationInt64,
@@ -86,7 +87,7 @@ func TestParseMapDurationInt64(t *testing.T) {
 func TestParseMapDurationUint(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationUintValue{}).Elem()
 	var varMapDurationUint = new(mapDurationUintValue)
-	Var(varMapDurationUint, "varMapDurationUint", "Use mapDurationUint")
+	Var(varMapDurationUint, "varMapDurationUint", "Use mapDurationUint", false, false)
 	varMapDurationUint.Set("1h2m3s:2")
 	if varMapDurationUint.String() != "1h2m3s:2" {
 		t.Fatalf("%v %v %v", varMapDurationUint,
@@ -98,7 +99,7 @@ func TestParseMapDurationUint(t *testing.T) {
 func TestParseMapDurationUint8(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationUint8Value{}).Elem()
 	var varMapDurationUint8 = new(mapDurationUint8Value)
-	Var(varMapDurationUint8, "varMapDurationUint8", "Use mapDurationUint8")
+	Var(varMapDurationUint8, "varMapDurationUint8", "Use mapDurationUint8", false, false)
 	varMapDurationUint8.Set("1h2m3s:2")
 	if varMapDurationUint8.String() != "1h2m3s:2" {
 		t.Fatalf("%v %v %v", varMapDurationUint8,
@@ -110,7 +111,7 @@ func TestParseMapDurationUint8(t *testing.T) {
 func TestParseMapDurationUint16(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationUint16Value{}).Elem()
 	var varMapDurationUint16 = new(mapDurationUint16Value)
-	Var(varMapDurationUint16, "varMapDurationUint16", "Use mapDurationUint16")
+	Var(varMapDurationUint16, "varMapDurationUint16", "Use mapDurationUint16", false, false)
 	varMapDurationUint16.Set("1h2m3s:2")
 	if varMapDurationUint16.String() != "1h2m3s:2" {
 		t.Fatalf("%v %v %v", varMapDurationUint16,
@@ -122,7 +123,7 @@ func TestParseMapDurationUint16(t *testing.T) {
 func TestParseMapDurationUint32(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationUint32Value{}).Elem()
 	var varMapDurationUint32 = new(mapDurationUint32Value)
-	Var(varMapDurationUint32, "varMapDurationUint32", "Use mapDurationUint32")
+	Var(varMapDurationUint32, "varMapDurationUint32", "Use mapDurationUint32", false, false)
 	varMapDurationUint32.Set("1h2m3s:2")
 	if varMapDurationUint32.String() != "1h2m3s:2" {
 		t.Fatalf("%v %v %v", varMapDurationUint32,
@@ -134,7 +135,7 @@ func TestParseMapDurationUint32(t *testing.T) {
 func TestParseMapDurationUint64(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationUint64Value{}).Elem()
 	var varMapDurationUint64 = new(mapDurationUint64Value)
-	Var(varMapDurationUint64, "varMapDurationUint64", "Use mapDurationUint64")
+	Var(varMapDurationUint64, "varMapDurationUint64", "Use mapDurationUint64", false, false)
 	varMapDurationUint64.Set("1h2m3s:2")
 	if varMapDurationUint64.String() != "1h2m3s:2" {
 		t.Fatalf("%v %v %v", varMapDurationUint64,
@@ -146,7 +147,7 @@ func TestParseMapDurationUint64(t *testing.T) {
 func TestParseMapDurationFloat64(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationFloat64Value{}).Elem()
 	var varMapDurationFloat64 = new(mapDurationFloat64Value)
-	Var(varMapDurationFloat64, "varMapDurationFloat64", "Use mapDurationFloat64")
+	Var(varMapDurationFloat64, "varMapDurationFloat64", "Use mapDurationFloat64", false, false)
 	varMapDurationFloat64.Set("1h2m3s:2.71828")
 	if varMapDurationFloat64.String() != "1h2m3s:2.71828" {
 		t.Fatalf("%v %v %v", varMapDurationFloat64,
@@ -158,7 +159,7 @@ func TestParseMapDurationFloat64(t *testing.T) {
 func TestParseMapDurationFloat32(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationFloat32Value{}).Elem()
 	var varMapDurationFloat32 = new(mapDurationFloat32Value)
-	Var(varMapDurationFloat32, "varMapDurationFloat32", "Use mapDurationFloat32")
+	Var(varMapDurationFloat32, "varMapDurationFloat32", "Use mapDurationFloat32", false, false)
 	varMapDurationFloat32.Set("1h2m3s:2.71828")
 	if varMapDurationFloat32.String() != "1h2m3s:2.71828" {
 		t.Fatalf("%v %v %v", varMapDurationFloat32,
@@ -170,7 +171,7 @@ func TestParseMapDurationFloat32(t *testing.T) {
 func TestParseMapDurationBool(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationBoolValue{}).Elem()
 	var varMapDurationBool = new(mapDurationBoolValue)
-	Var(varMapDurationBool, "varMapDurationBool", "Use mapDurationBool")
+	Var(varMapDurationBool, "varMapDurationBool", "Use mapDurationBool", false, false)
 	varMapDurationBool.Set("1h2m3s:true")
 	if varMapDurationBool.String() != "1h2m3s:true" {
 		t.Fatalf("%v %v %v", varMapDurationBool,
@@ -182,7 +183,7 @@ func TestParseMapDurationBool(t *testing.T) {
 func TestParseMapDurationString(t *testing.T) {
 	// T := reflect.TypeOf(mapDurationStringValue{}).Elem()
 	var varMapDurationString = new(mapDurationStringValue)
-	Var(varMapDurationString, "varMapDurationString", "Use mapDurationString")
+	Var(varMapDurationString, "varMapDurationString", "Use mapDurationString", false, false)
 	varMapDurationString.Set("1h2m3s:one")
 	if varMapDurationString.String() != "1h2m3s:one" {
 		t.Fatalf("%v %v %v", varMapDurationString,
@@ -194,7 +195,7 @@ func TestParseMapDurationString(t *testing.T) {
 func TestParseMapIntDuration(t *testing.T) {
 	// T := reflect.TypeOf(mapIntDurationValue{}).Elem()
 	var varMapIntDuration = new(mapIntDurationValue)
-	Var(varMapIntDuration, "varMapIntDuration", "Use mapIntDuration")
+	Var(varMapIntDuration, "varMapIntDuration", "Use mapIntDuration", false, false)
 	varMapIntDuration.Set("-1:1h2m3s")
 	if varMapIntDuration.String() != "-1:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapIntDuration,
@@ -206,7 +207,7 @@ func TestParseMapIntDuration(t *testing.T) {
 func TestParseMapIntInt(t *testing.T) {
 	// T := reflect.TypeOf(mapIntIntValue{}).Elem()
 	var varMapIntInt = new(mapIntIntValue)
-	Var(varMapIntInt, "varMapIntInt", "Use mapIntInt")
+	Var(varMapIntInt, "varMapIntInt", "Use mapIntInt", false, false)
 	varMapIntInt.Set("-1:-1")
 	if varMapIntInt.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapIntInt,
@@ -218,7 +219,7 @@ func TestParseMapIntInt(t *testing.T) {
 func TestParseMapIntInt8(t *testing.T) {
 	// T := reflect.TypeOf(mapIntInt8Value{}).Elem()
 	var varMapIntInt8 = new(mapIntInt8Value)
-	Var(varMapIntInt8, "varMapIntInt8", "Use mapIntInt8")
+	Var(varMapIntInt8, "varMapIntInt8", "Use mapIntInt8", false, false)
 	varMapIntInt8.Set("-1:-1")
 	if varMapIntInt8.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapIntInt8,
@@ -230,7 +231,7 @@ func TestParseMapIntInt8(t *testing.T) {
 func TestParseMapIntInt16(t *testing.T) {
 	// T := reflect.TypeOf(mapIntInt16Value{}).Elem()
 	var varMapIntInt16 = new(mapIntInt16Value)
-	Var(varMapIntInt16, "varMapIntInt16", "Use mapIntInt16")
+	Var(varMapIntInt16, "varMapIntInt16", "Use mapIntInt16", false, false)
 	varMapIntInt16.Set("-1:-1")
 	if varMapIntInt16.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapIntInt16,
@@ -242,7 +243,7 @@ func TestParseMapIntInt16(t *testing.T) {
 func TestParseMapIntInt32(t *testing.T) {
 	// T := reflect.TypeOf(mapIntInt32Value{}).Elem()
 	var varMapIntInt32 = new(mapIntInt32Value)
-	Var(varMapIntInt32, "varMapIntInt32", "Use mapIntInt32")
+	Var(varMapIntInt32, "varMapIntInt32", "Use mapIntInt32", false, false)
 	varMapIntInt32.Set("-1:-1")
 	if varMapIntInt32.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapIntInt32,
@@ -254,7 +255,7 @@ func TestParseMapIntInt32(t *testing.T) {
 func TestParseMapIntInt64(t *testing.T) {
 	// T := reflect.TypeOf(mapIntInt64Value{}).Elem()
 	var varMapIntInt64 = new(mapIntInt64Value)
-	Var(varMapIntInt64, "varMapIntInt64", "Use mapIntInt64")
+	Var(varMapIntInt64, "varMapIntInt64", "Use mapIntInt64", false, false)
 	varMapIntInt64.Set("-1:-1")
 	if varMapIntInt64.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapIntInt64,
@@ -266,7 +267,7 @@ func TestParseMapIntInt64(t *testing.T) {
 func TestParseMapIntUint(t *testing.T) {
 	// T := reflect.TypeOf(mapIntUintValue{}).Elem()
 	var varMapIntUint = new(mapIntUintValue)
-	Var(varMapIntUint, "varMapIntUint", "Use mapIntUint")
+	Var(varMapIntUint, "varMapIntUint", "Use mapIntUint", false, false)
 	varMapIntUint.Set("-1:2")
 	if varMapIntUint.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapIntUint,
@@ -278,7 +279,7 @@ func TestParseMapIntUint(t *testing.T) {
 func TestParseMapIntUint8(t *testing.T) {
 	// T := reflect.TypeOf(mapIntUint8Value{}).Elem()
 	var varMapIntUint8 = new(mapIntUint8Value)
-	Var(varMapIntUint8, "varMapIntUint8", "Use mapIntUint8")
+	Var(varMapIntUint8, "varMapIntUint8", "Use mapIntUint8", false, false)
 	varMapIntUint8.Set("-1:2")
 	if varMapIntUint8.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapIntUint8,
@@ -290,7 +291,7 @@ func TestParseMapIntUint8(t *testing.T) {
 func TestParseMapIntUint16(t *testing.T) {
 	// T := reflect.TypeOf(mapIntUint16Value{}).Elem()
 	var varMapIntUint16 = new(mapIntUint16Value)
-	Var(varMapIntUint16, "varMapIntUint16", "Use mapIntUint16")
+	Var(varMapIntUint16, "varMapIntUint16", "Use mapIntUint16", false, false)
 	varMapIntUint16.Set("-1:2")
 	if varMapIntUint16.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapIntUint16,
@@ -302,7 +303,7 @@ func TestParseMapIntUint16(t *testing.T) {
 func TestParseMapIntUint32(t *testing.T) {
 	// T := reflect.TypeOf(mapIntUint32Value{}).Elem()
 	var varMapIntUint32 = new(mapIntUint32Value)
-	Var(varMapIntUint32, "varMapIntUint32", "Use mapIntUint32")
+	Var(varMapIntUint32, "varMapIntUint32", "Use mapIntUint32", false, false)
 	varMapIntUint32.Set("-1:2")
 	if varMapIntUint32.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapIntUint32,
@@ -314,7 +315,7 @@ func TestParseMapIntUint32(t *testing.T) {
 func TestParseMapIntUint64(t *testing.T) {
 	// T := reflect.TypeOf(mapIntUint64Value{}).Elem()
 	var varMapIntUint64 = new(mapIntUint64Value)
-	Var(varMapIntUint64, "varMapIntUint64", "Use mapIntUint64")
+	Var(varMapIntUint64, "varMapIntUint64", "Use mapIntUint64", false, false)
 	varMapIntUint64.Set("-1:2")
 	if varMapIntUint64.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapIntUint64,
@@ -326,7 +327,7 @@ func TestParseMapIntUint64(t *testing.T) {
 func TestParseMapIntFloat64(t *testing.T) {
 	// T := reflect.TypeOf(mapIntFloat64Value{}).Elem()
 	var varMapIntFloat64 = new(mapIntFloat64Value)
-	Var(varMapIntFloat64, "varMapIntFloat64", "Use mapIntFloat64")
+	Var(varMapIntFloat64, "varMapIntFloat64", "Use mapIntFloat64", false, false)
 	varMapIntFloat64.Set("-1:2.71828")
 	if varMapIntFloat64.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapIntFloat64,
@@ -338,7 +339,7 @@ func TestParseMapIntFloat64(t *testing.T) {
 func TestParseMapIntFloat32(t *testing.T) {
 	// T := reflect.TypeOf(mapIntFloat32Value{}).Elem()
 	var varMapIntFloat32 = new(mapIntFloat32Value)
-	Var(varMapIntFloat32, "varMapIntFloat32", "Use mapIntFloat32")
+	Var(varMapIntFloat32, "varMapIntFloat32", "Use mapIntFloat32", false, false)
 	varMapIntFloat32.Set("-1:2.71828")
 	if varMapIntFloat32.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapIntFloat32,
@@ -350,7 +351,7 @@ func TestParseMapIntFloat32(t *testing.T) {
 func TestParseMapIntBool(t *testing.T) {
 	// T := reflect.TypeOf(mapIntBoolValue{}).Elem()
 	var varMapIntBool = new(mapIntBoolValue)
-	Var(varMapIntBool, "varMapIntBool", "Use mapIntBool")
+	Var(varMapIntBool, "varMapIntBool", "Use mapIntBool", false, false)
 	varMapIntBool.Set("-1:true")
 	if varMapIntBool.String() != "-1:true" {
 		t.Fatalf("%v %v %v", varMapIntBool,
@@ -362,7 +363,7 @@ func TestParseMapIntBool(t *testing.T) {
 func TestParseMapIntString(t *testing.T) {
 	// T := reflect.TypeOf(mapIntStringValue{}).Elem()
 	var varMapIntString = new(mapIntStringValue)
-	Var(varMapIntString, "varMapIntString", "Use mapIntString")
+	Var(varMapIntString, "varMapIntString", "Use mapIntString", false, false)
 	varMapIntString.Set("-1:one")
 	if varMapIntString.String() != "-1:one" {
 		t.Fatalf("%v %v %v", varMapIntString,
@@ -374,7 +375,7 @@ func TestParseMapIntString(t *testing.T) {
 func TestParseMapInt8Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8DurationValue{}).Elem()
 	var varMapInt8Duration = new(mapInt8DurationValue)
-	Var(varMapInt8Duration, "varMapInt8Duration", "Use mapInt8Duration")
+	Var(varMapInt8Duration, "varMapInt8Duration", "Use mapInt8Duration", false, false)
 	varMapInt8Duration.Set("-1:1h2m3s")
 	if varMapInt8Duration.String() != "-1:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapInt8Duration,
@@ -386,7 +387,7 @@ func TestParseMapInt8Duration(t *testing.T) {
 func TestParseMapInt8Int(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8IntValue{}).Elem()
 	var varMapInt8Int = new(mapInt8IntValue)
-	Var(varMapInt8Int, "varMapInt8Int", "Use mapInt8Int")
+	Var(varMapInt8Int, "varMapInt8Int", "Use mapInt8Int", false, false)
 	varMapInt8Int.Set("-1:-1")
 	if varMapInt8Int.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt8Int,
@@ -398,7 +399,7 @@ func TestParseMapInt8Int(t *testing.T) {
 func TestParseMapInt8Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Int8Value{}).Elem()
 	var varMapInt8Int8 = new(mapInt8Int8Value)
-	Var(varMapInt8Int8, "varMapInt8Int8", "Use mapInt8Int8")
+	Var(varMapInt8Int8, "varMapInt8Int8", "Use mapInt8Int8", false, false)
 	varMapInt8Int8.Set("-1:-1")
 	if varMapInt8Int8.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt8Int8,
@@ -410,7 +411,7 @@ func TestParseMapInt8Int8(t *testing.T) {
 func TestParseMapInt8Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Int16Value{}).Elem()
 	var varMapInt8Int16 = new(mapInt8Int16Value)
-	Var(varMapInt8Int16, "varMapInt8Int16", "Use mapInt8Int16")
+	Var(varMapInt8Int16, "varMapInt8Int16", "Use mapInt8Int16", false, false)
 	varMapInt8Int16.Set("-1:-1")
 	if varMapInt8Int16.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt8Int16,
@@ -422,7 +423,7 @@ func TestParseMapInt8Int16(t *testing.T) {
 func TestParseMapInt8Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Int32Value{}).Elem()
 	var varMapInt8Int32 = new(mapInt8Int32Value)
-	Var(varMapInt8Int32, "varMapInt8Int32", "Use mapInt8Int32")
+	Var(varMapInt8Int32, "varMapInt8Int32", "Use mapInt8Int32", false, false)
 	varMapInt8Int32.Set("-1:-1")
 	if varMapInt8Int32.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt8Int32,
@@ -434,7 +435,7 @@ func TestParseMapInt8Int32(t *testing.T) {
 func TestParseMapInt8Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Int64Value{}).Elem()
 	var varMapInt8Int64 = new(mapInt8Int64Value)
-	Var(varMapInt8Int64, "varMapInt8Int64", "Use mapInt8Int64")
+	Var(varMapInt8Int64, "varMapInt8Int64", "Use mapInt8Int64", false, false)
 	varMapInt8Int64.Set("-1:-1")
 	if varMapInt8Int64.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt8Int64,
@@ -446,7 +447,7 @@ func TestParseMapInt8Int64(t *testing.T) {
 func TestParseMapInt8Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8UintValue{}).Elem()
 	var varMapInt8Uint = new(mapInt8UintValue)
-	Var(varMapInt8Uint, "varMapInt8Uint", "Use mapInt8Uint")
+	Var(varMapInt8Uint, "varMapInt8Uint", "Use mapInt8Uint", false, false)
 	varMapInt8Uint.Set("-1:2")
 	if varMapInt8Uint.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt8Uint,
@@ -458,7 +459,7 @@ func TestParseMapInt8Uint(t *testing.T) {
 func TestParseMapInt8Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Uint8Value{}).Elem()
 	var varMapInt8Uint8 = new(mapInt8Uint8Value)
-	Var(varMapInt8Uint8, "varMapInt8Uint8", "Use mapInt8Uint8")
+	Var(varMapInt8Uint8, "varMapInt8Uint8", "Use mapInt8Uint8", false, false)
 	varMapInt8Uint8.Set("-1:2")
 	if varMapInt8Uint8.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt8Uint8,
@@ -470,7 +471,7 @@ func TestParseMapInt8Uint8(t *testing.T) {
 func TestParseMapInt8Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Uint16Value{}).Elem()
 	var varMapInt8Uint16 = new(mapInt8Uint16Value)
-	Var(varMapInt8Uint16, "varMapInt8Uint16", "Use mapInt8Uint16")
+	Var(varMapInt8Uint16, "varMapInt8Uint16", "Use mapInt8Uint16", false, false)
 	varMapInt8Uint16.Set("-1:2")
 	if varMapInt8Uint16.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt8Uint16,
@@ -482,7 +483,7 @@ func TestParseMapInt8Uint16(t *testing.T) {
 func TestParseMapInt8Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Uint32Value{}).Elem()
 	var varMapInt8Uint32 = new(mapInt8Uint32Value)
-	Var(varMapInt8Uint32, "varMapInt8Uint32", "Use mapInt8Uint32")
+	Var(varMapInt8Uint32, "varMapInt8Uint32", "Use mapInt8Uint32", false, false)
 	varMapInt8Uint32.Set("-1:2")
 	if varMapInt8Uint32.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt8Uint32,
@@ -494,7 +495,7 @@ func TestParseMapInt8Uint32(t *testing.T) {
 func TestParseMapInt8Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Uint64Value{}).Elem()
 	var varMapInt8Uint64 = new(mapInt8Uint64Value)
-	Var(varMapInt8Uint64, "varMapInt8Uint64", "Use mapInt8Uint64")
+	Var(varMapInt8Uint64, "varMapInt8Uint64", "Use mapInt8Uint64", false, false)
 	varMapInt8Uint64.Set("-1:2")
 	if varMapInt8Uint64.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt8Uint64,
@@ -506,7 +507,7 @@ func TestParseMapInt8Uint64(t *testing.T) {
 func TestParseMapInt8Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Float64Value{}).Elem()
 	var varMapInt8Float64 = new(mapInt8Float64Value)
-	Var(varMapInt8Float64, "varMapInt8Float64", "Use mapInt8Float64")
+	Var(varMapInt8Float64, "varMapInt8Float64", "Use mapInt8Float64", false, false)
 	varMapInt8Float64.Set("-1:2.71828")
 	if varMapInt8Float64.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt8Float64,
@@ -518,7 +519,7 @@ func TestParseMapInt8Float64(t *testing.T) {
 func TestParseMapInt8Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8Float32Value{}).Elem()
 	var varMapInt8Float32 = new(mapInt8Float32Value)
-	Var(varMapInt8Float32, "varMapInt8Float32", "Use mapInt8Float32")
+	Var(varMapInt8Float32, "varMapInt8Float32", "Use mapInt8Float32", false, false)
 	varMapInt8Float32.Set("-1:2.71828")
 	if varMapInt8Float32.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt8Float32,
@@ -530,7 +531,7 @@ func TestParseMapInt8Float32(t *testing.T) {
 func TestParseMapInt8Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8BoolValue{}).Elem()
 	var varMapInt8Bool = new(mapInt8BoolValue)
-	Var(varMapInt8Bool, "varMapInt8Bool", "Use mapInt8Bool")
+	Var(varMapInt8Bool, "varMapInt8Bool", "Use mapInt8Bool", false, false)
 	varMapInt8Bool.Set("-1:true")
 	if varMapInt8Bool.String() != "-1:true" {
 		t.Fatalf("%v %v %v", varMapInt8Bool,
@@ -542,7 +543,7 @@ func TestParseMapInt8Bool(t *testing.T) {
 func TestParseMapInt8String(t *testing.T) {
 	// T := reflect.TypeOf(mapInt8StringValue{}).Elem()
 	var varMapInt8String = new(mapInt8StringValue)
-	Var(varMapInt8String, "varMapInt8String", "Use mapInt8String")
+	Var(varMapInt8String, "varMapInt8String", "Use mapInt8String", false, false)
 	varMapInt8String.Set("-1:one")
 	if varMapInt8String.String() != "-1:one" {
 		t.Fatalf("%v %v %v", varMapInt8String,
@@ -554,7 +555,7 @@ func TestParseMapInt8String(t *testing.T) {
 func TestParseMapInt16Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16DurationValue{}).Elem()
 	var varMapInt16Duration = new(mapInt16DurationValue)
-	Var(varMapInt16Duration, "varMapInt16Duration", "Use mapInt16Duration")
+	Var(varMapInt16Duration, "varMapInt16Duration", "Use mapInt16Duration", false, false)
 	varMapInt16Duration.Set("-1:1h2m3s")
 	if varMapInt16Duration.String() != "-1:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapInt16Duration,
@@ -566,7 +567,7 @@ func TestParseMapInt16Duration(t *testing.T) {
 func TestParseMapInt16Int(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16IntValue{}).Elem()
 	var varMapInt16Int = new(mapInt16IntValue)
-	Var(varMapInt16Int, "varMapInt16Int", "Use mapInt16Int")
+	Var(varMapInt16Int, "varMapInt16Int", "Use mapInt16Int", false, false)
 	varMapInt16Int.Set("-1:-1")
 	if varMapInt16Int.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt16Int,
@@ -578,7 +579,7 @@ func TestParseMapInt16Int(t *testing.T) {
 func TestParseMapInt16Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Int8Value{}).Elem()
 	var varMapInt16Int8 = new(mapInt16Int8Value)
-	Var(varMapInt16Int8, "varMapInt16Int8", "Use mapInt16Int8")
+	Var(varMapInt16Int8, "varMapInt16Int8", "Use mapInt16Int8", false, false)
 	varMapInt16Int8.Set("-1:-1")
 	if varMapInt16Int8.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt16Int8,
@@ -590,7 +591,7 @@ func TestParseMapInt16Int8(t *testing.T) {
 func TestParseMapInt16Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Int16Value{}).Elem()
 	var varMapInt16Int16 = new(mapInt16Int16Value)
-	Var(varMapInt16Int16, "varMapInt16Int16", "Use mapInt16Int16")
+	Var(varMapInt16Int16, "varMapInt16Int16", "Use mapInt16Int16", false, false)
 	varMapInt16Int16.Set("-1:-1")
 	if varMapInt16Int16.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt16Int16,
@@ -602,7 +603,7 @@ func TestParseMapInt16Int16(t *testing.T) {
 func TestParseMapInt16Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Int32Value{}).Elem()
 	var varMapInt16Int32 = new(mapInt16Int32Value)
-	Var(varMapInt16Int32, "varMapInt16Int32", "Use mapInt16Int32")
+	Var(varMapInt16Int32, "varMapInt16Int32", "Use mapInt16Int32", false, false)
 	varMapInt16Int32.Set("-1:-1")
 	if varMapInt16Int32.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt16Int32,
@@ -614,7 +615,7 @@ func TestParseMapInt16Int32(t *testing.T) {
 func TestParseMapInt16Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Int64Value{}).Elem()
 	var varMapInt16Int64 = new(mapInt16Int64Value)
-	Var(varMapInt16Int64, "varMapInt16Int64", "Use mapInt16Int64")
+	Var(varMapInt16Int64, "varMapInt16Int64", "Use mapInt16Int64", false, false)
 	varMapInt16Int64.Set("-1:-1")
 	if varMapInt16Int64.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt16Int64,
@@ -626,7 +627,7 @@ func TestParseMapInt16Int64(t *testing.T) {
 func TestParseMapInt16Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16UintValue{}).Elem()
 	var varMapInt16Uint = new(mapInt16UintValue)
-	Var(varMapInt16Uint, "varMapInt16Uint", "Use mapInt16Uint")
+	Var(varMapInt16Uint, "varMapInt16Uint", "Use mapInt16Uint", false, false)
 	varMapInt16Uint.Set("-1:2")
 	if varMapInt16Uint.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt16Uint,
@@ -638,7 +639,7 @@ func TestParseMapInt16Uint(t *testing.T) {
 func TestParseMapInt16Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Uint8Value{}).Elem()
 	var varMapInt16Uint8 = new(mapInt16Uint8Value)
-	Var(varMapInt16Uint8, "varMapInt16Uint8", "Use mapInt16Uint8")
+	Var(varMapInt16Uint8, "varMapInt16Uint8", "Use mapInt16Uint8", false, false)
 	varMapInt16Uint8.Set("-1:2")
 	if varMapInt16Uint8.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt16Uint8,
@@ -650,7 +651,7 @@ func TestParseMapInt16Uint8(t *testing.T) {
 func TestParseMapInt16Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Uint16Value{}).Elem()
 	var varMapInt16Uint16 = new(mapInt16Uint16Value)
-	Var(varMapInt16Uint16, "varMapInt16Uint16", "Use mapInt16Uint16")
+	Var(varMapInt16Uint16, "varMapInt16Uint16", "Use mapInt16Uint16", false, false)
 	varMapInt16Uint16.Set("-1:2")
 	if varMapInt16Uint16.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt16Uint16,
@@ -662,7 +663,7 @@ func TestParseMapInt16Uint16(t *testing.T) {
 func TestParseMapInt16Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Uint32Value{}).Elem()
 	var varMapInt16Uint32 = new(mapInt16Uint32Value)
-	Var(varMapInt16Uint32, "varMapInt16Uint32", "Use mapInt16Uint32")
+	Var(varMapInt16Uint32, "varMapInt16Uint32", "Use mapInt16Uint32", false, false)
 	varMapInt16Uint32.Set("-1:2")
 	if varMapInt16Uint32.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt16Uint32,
@@ -674,7 +675,7 @@ func TestParseMapInt16Uint32(t *testing.T) {
 func TestParseMapInt16Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Uint64Value{}).Elem()
 	var varMapInt16Uint64 = new(mapInt16Uint64Value)
-	Var(varMapInt16Uint64, "varMapInt16Uint64", "Use mapInt16Uint64")
+	Var(varMapInt16Uint64, "varMapInt16Uint64", "Use mapInt16Uint64", false, false)
 	varMapInt16Uint64.Set("-1:2")
 	if varMapInt16Uint64.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt16Uint64,
@@ -686,7 +687,7 @@ func TestParseMapInt16Uint64(t *testing.T) {
 func TestParseMapInt16Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Float64Value{}).Elem()
 	var varMapInt16Float64 = new(mapInt16Float64Value)
-	Var(varMapInt16Float64, "varMapInt16Float64", "Use mapInt16Float64")
+	Var(varMapInt16Float64, "varMapInt16Float64", "Use mapInt16Float64", false, false)
 	varMapInt16Float64.Set("-1:2.71828")
 	if varMapInt16Float64.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt16Float64,
@@ -698,7 +699,7 @@ func TestParseMapInt16Float64(t *testing.T) {
 func TestParseMapInt16Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16Float32Value{}).Elem()
 	var varMapInt16Float32 = new(mapInt16Float32Value)
-	Var(varMapInt16Float32, "varMapInt16Float32", "Use mapInt16Float32")
+	Var(varMapInt16Float32, "varMapInt16Float32", "Use mapInt16Float32", false, false)
 	varMapInt16Float32.Set("-1:2.71828")
 	if varMapInt16Float32.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt16Float32,
@@ -710,7 +711,7 @@ func TestParseMapInt16Float32(t *testing.T) {
 func TestParseMapInt16Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16BoolValue{}).Elem()
 	var varMapInt16Bool = new(mapInt16BoolValue)
-	Var(varMapInt16Bool, "varMapInt16Bool", "Use mapInt16Bool")
+	Var(varMapInt16Bool, "varMapInt16Bool", "Use mapInt16Bool", false, false)
 	varMapInt16Bool.Set("-1:true")
 	if varMapInt16Bool.String() != "-1:true" {
 		t.Fatalf("%v %v %v", varMapInt16Bool,
@@ -722,7 +723,7 @@ func TestParseMapInt16Bool(t *testing.T) {
 func TestParseMapInt16String(t *testing.T) {
 	// T := reflect.TypeOf(mapInt16StringValue{}).Elem()
 	var varMapInt16String = new(mapInt16StringValue)
-	Var(varMapInt16String, "varMapInt16String", "Use mapInt16String")
+	Var(varMapInt16String, "varMapInt16String", "Use mapInt16String", false, false)
 	varMapInt16String.Set("-1:one")
 	if varMapInt16String.String() != "-1:one" {
 		t.Fatalf("%v %v %v", varMapInt16String,
@@ -734,7 +735,7 @@ func TestParseMapInt16String(t *testing.T) {
 func TestParseMapInt32Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32DurationValue{}).Elem()
 	var varMapInt32Duration = new(mapInt32DurationValue)
-	Var(varMapInt32Duration, "varMapInt32Duration", "Use mapInt32Duration")
+	Var(varMapInt32Duration, "varMapInt32Duration", "Use mapInt32Duration", false, false)
 	varMapInt32Duration.Set("-1:1h2m3s")
 	if varMapInt32Duration.String() != "-1:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapInt32Duration,
@@ -746,7 +747,7 @@ func TestParseMapInt32Duration(t *testing.T) {
 func TestParseMapInt32Int(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32IntValue{}).Elem()
 	var varMapInt32Int = new(mapInt32IntValue)
-	Var(varMapInt32Int, "varMapInt32Int", "Use mapInt32Int")
+	Var(varMapInt32Int, "varMapInt32Int", "Use mapInt32Int", false, false)
 	varMapInt32Int.Set("-1:-1")
 	if varMapInt32Int.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt32Int,
@@ -758,7 +759,7 @@ func TestParseMapInt32Int(t *testing.T) {
 func TestParseMapInt32Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Int8Value{}).Elem()
 	var varMapInt32Int8 = new(mapInt32Int8Value)
-	Var(varMapInt32Int8, "varMapInt32Int8", "Use mapInt32Int8")
+	Var(varMapInt32Int8, "varMapInt32Int8", "Use mapInt32Int8", false, false)
 	varMapInt32Int8.Set("-1:-1")
 	if varMapInt32Int8.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt32Int8,
@@ -770,7 +771,7 @@ func TestParseMapInt32Int8(t *testing.T) {
 func TestParseMapInt32Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Int16Value{}).Elem()
 	var varMapInt32Int16 = new(mapInt32Int16Value)
-	Var(varMapInt32Int16, "varMapInt32Int16", "Use mapInt32Int16")
+	Var(varMapInt32Int16, "varMapInt32Int16", "Use mapInt32Int16", false, false)
 	varMapInt32Int16.Set("-1:-1")
 	if varMapInt32Int16.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt32Int16,
@@ -782,7 +783,7 @@ func TestParseMapInt32Int16(t *testing.T) {
 func TestParseMapInt32Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Int32Value{}).Elem()
 	var varMapInt32Int32 = new(mapInt32Int32Value)
-	Var(varMapInt32Int32, "varMapInt32Int32", "Use mapInt32Int32")
+	Var(varMapInt32Int32, "varMapInt32Int32", "Use mapInt32Int32", false, false)
 	varMapInt32Int32.Set("-1:-1")
 	if varMapInt32Int32.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt32Int32,
@@ -794,7 +795,7 @@ func TestParseMapInt32Int32(t *testing.T) {
 func TestParseMapInt32Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Int64Value{}).Elem()
 	var varMapInt32Int64 = new(mapInt32Int64Value)
-	Var(varMapInt32Int64, "varMapInt32Int64", "Use mapInt32Int64")
+	Var(varMapInt32Int64, "varMapInt32Int64", "Use mapInt32Int64", false, false)
 	varMapInt32Int64.Set("-1:-1")
 	if varMapInt32Int64.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt32Int64,
@@ -806,7 +807,7 @@ func TestParseMapInt32Int64(t *testing.T) {
 func TestParseMapInt32Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32UintValue{}).Elem()
 	var varMapInt32Uint = new(mapInt32UintValue)
-	Var(varMapInt32Uint, "varMapInt32Uint", "Use mapInt32Uint")
+	Var(varMapInt32Uint, "varMapInt32Uint", "Use mapInt32Uint", false, false)
 	varMapInt32Uint.Set("-1:2")
 	if varMapInt32Uint.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt32Uint,
@@ -818,7 +819,7 @@ func TestParseMapInt32Uint(t *testing.T) {
 func TestParseMapInt32Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Uint8Value{}).Elem()
 	var varMapInt32Uint8 = new(mapInt32Uint8Value)
-	Var(varMapInt32Uint8, "varMapInt32Uint8", "Use mapInt32Uint8")
+	Var(varMapInt32Uint8, "varMapInt32Uint8", "Use mapInt32Uint8", false, false)
 	varMapInt32Uint8.Set("-1:2")
 	if varMapInt32Uint8.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt32Uint8,
@@ -830,7 +831,7 @@ func TestParseMapInt32Uint8(t *testing.T) {
 func TestParseMapInt32Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Uint16Value{}).Elem()
 	var varMapInt32Uint16 = new(mapInt32Uint16Value)
-	Var(varMapInt32Uint16, "varMapInt32Uint16", "Use mapInt32Uint16")
+	Var(varMapInt32Uint16, "varMapInt32Uint16", "Use mapInt32Uint16", false, false)
 	varMapInt32Uint16.Set("-1:2")
 	if varMapInt32Uint16.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt32Uint16,
@@ -842,7 +843,7 @@ func TestParseMapInt32Uint16(t *testing.T) {
 func TestParseMapInt32Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Uint32Value{}).Elem()
 	var varMapInt32Uint32 = new(mapInt32Uint32Value)
-	Var(varMapInt32Uint32, "varMapInt32Uint32", "Use mapInt32Uint32")
+	Var(varMapInt32Uint32, "varMapInt32Uint32", "Use mapInt32Uint32", false, false)
 	varMapInt32Uint32.Set("-1:2")
 	if varMapInt32Uint32.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt32Uint32,
@@ -854,7 +855,7 @@ func TestParseMapInt32Uint32(t *testing.T) {
 func TestParseMapInt32Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Uint64Value{}).Elem()
 	var varMapInt32Uint64 = new(mapInt32Uint64Value)
-	Var(varMapInt32Uint64, "varMapInt32Uint64", "Use mapInt32Uint64")
+	Var(varMapInt32Uint64, "varMapInt32Uint64", "Use mapInt32Uint64", false, false)
 	varMapInt32Uint64.Set("-1:2")
 	if varMapInt32Uint64.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt32Uint64,
@@ -866,7 +867,7 @@ func TestParseMapInt32Uint64(t *testing.T) {
 func TestParseMapInt32Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Float64Value{}).Elem()
 	var varMapInt32Float64 = new(mapInt32Float64Value)
-	Var(varMapInt32Float64, "varMapInt32Float64", "Use mapInt32Float64")
+	Var(varMapInt32Float64, "varMapInt32Float64", "Use mapInt32Float64", false, false)
 	varMapInt32Float64.Set("-1:2.71828")
 	if varMapInt32Float64.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt32Float64,
@@ -878,7 +879,7 @@ func TestParseMapInt32Float64(t *testing.T) {
 func TestParseMapInt32Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32Float32Value{}).Elem()
 	var varMapInt32Float32 = new(mapInt32Float32Value)
-	Var(varMapInt32Float32, "varMapInt32Float32", "Use mapInt32Float32")
+	Var(varMapInt32Float32, "varMapInt32Float32", "Use mapInt32Float32", false, false)
 	varMapInt32Float32.Set("-1:2.71828")
 	if varMapInt32Float32.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt32Float32,
@@ -890,7 +891,7 @@ func TestParseMapInt32Float32(t *testing.T) {
 func TestParseMapInt32Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32BoolValue{}).Elem()
 	var varMapInt32Bool = new(mapInt32BoolValue)
-	Var(varMapInt32Bool, "varMapInt32Bool", "Use mapInt32Bool")
+	Var(varMapInt32Bool, "varMapInt32Bool", "Use mapInt32Bool", false, false)
 	varMapInt32Bool.Set("-1:true")
 	if varMapInt32Bool.String() != "-1:true" {
 		t.Fatalf("%v %v %v", varMapInt32Bool,
@@ -902,7 +903,7 @@ func TestParseMapInt32Bool(t *testing.T) {
 func TestParseMapInt32String(t *testing.T) {
 	// T := reflect.TypeOf(mapInt32StringValue{}).Elem()
 	var varMapInt32String = new(mapInt32StringValue)
-	Var(varMapInt32String, "varMapInt32String", "Use mapInt32String")
+	Var(varMapInt32String, "varMapInt32String", "Use mapInt32String", false, false)
 	varMapInt32String.Set("-1:one")
 	if varMapInt32String.String() != "-1:one" {
 		t.Fatalf("%v %v %v", varMapInt32String,
@@ -914,7 +915,7 @@ func TestParseMapInt32String(t *testing.T) {
 func TestParseMapInt64Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64DurationValue{}).Elem()
 	var varMapInt64Duration = new(mapInt64DurationValue)
-	Var(varMapInt64Duration, "varMapInt64Duration", "Use mapInt64Duration")
+	Var(varMapInt64Duration, "varMapInt64Duration", "Use mapInt64Duration", false, false)
 	varMapInt64Duration.Set("-1:1h2m3s")
 	if varMapInt64Duration.String() != "-1:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapInt64Duration,
@@ -926,7 +927,7 @@ func TestParseMapInt64Duration(t *testing.T) {
 func TestParseMapInt64Int(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64IntValue{}).Elem()
 	var varMapInt64Int = new(mapInt64IntValue)
-	Var(varMapInt64Int, "varMapInt64Int", "Use mapInt64Int")
+	Var(varMapInt64Int, "varMapInt64Int", "Use mapInt64Int", false, false)
 	varMapInt64Int.Set("-1:-1")
 	if varMapInt64Int.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt64Int,
@@ -938,7 +939,7 @@ func TestParseMapInt64Int(t *testing.T) {
 func TestParseMapInt64Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Int8Value{}).Elem()
 	var varMapInt64Int8 = new(mapInt64Int8Value)
-	Var(varMapInt64Int8, "varMapInt64Int8", "Use mapInt64Int8")
+	Var(varMapInt64Int8, "varMapInt64Int8", "Use mapInt64Int8", false, false)
 	varMapInt64Int8.Set("-1:-1")
 	if varMapInt64Int8.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt64Int8,
@@ -950,7 +951,7 @@ func TestParseMapInt64Int8(t *testing.T) {
 func TestParseMapInt64Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Int16Value{}).Elem()
 	var varMapInt64Int16 = new(mapInt64Int16Value)
-	Var(varMapInt64Int16, "varMapInt64Int16", "Use mapInt64Int16")
+	Var(varMapInt64Int16, "varMapInt64Int16", "Use mapInt64Int16", false, false)
 	varMapInt64Int16.Set("-1:-1")
 	if varMapInt64Int16.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt64Int16,
@@ -962,7 +963,7 @@ func TestParseMapInt64Int16(t *testing.T) {
 func TestParseMapInt64Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Int32Value{}).Elem()
 	var varMapInt64Int32 = new(mapInt64Int32Value)
-	Var(varMapInt64Int32, "varMapInt64Int32", "Use mapInt64Int32")
+	Var(varMapInt64Int32, "varMapInt64Int32", "Use mapInt64Int32", false, false)
 	varMapInt64Int32.Set("-1:-1")
 	if varMapInt64Int32.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt64Int32,
@@ -974,7 +975,7 @@ func TestParseMapInt64Int32(t *testing.T) {
 func TestParseMapInt64Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Int64Value{}).Elem()
 	var varMapInt64Int64 = new(mapInt64Int64Value)
-	Var(varMapInt64Int64, "varMapInt64Int64", "Use mapInt64Int64")
+	Var(varMapInt64Int64, "varMapInt64Int64", "Use mapInt64Int64", false, false)
 	varMapInt64Int64.Set("-1:-1")
 	if varMapInt64Int64.String() != "-1:-1" {
 		t.Fatalf("%v %v %v", varMapInt64Int64,
@@ -986,7 +987,7 @@ func TestParseMapInt64Int64(t *testing.T) {
 func TestParseMapInt64Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64UintValue{}).Elem()
 	var varMapInt64Uint = new(mapInt64UintValue)
-	Var(varMapInt64Uint, "varMapInt64Uint", "Use mapInt64Uint")
+	Var(varMapInt64Uint, "varMapInt64Uint", "Use mapInt64Uint", false, false)
 	varMapInt64Uint.Set("-1:2")
 	if varMapInt64Uint.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt64Uint,
@@ -998,7 +999,7 @@ func TestParseMapInt64Uint(t *testing.T) {
 func TestParseMapInt64Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Uint8Value{}).Elem()
 	var varMapInt64Uint8 = new(mapInt64Uint8Value)
-	Var(varMapInt64Uint8, "varMapInt64Uint8", "Use mapInt64Uint8")
+	Var(varMapInt64Uint8, "varMapInt64Uint8", "Use mapInt64Uint8", false, false)
 	varMapInt64Uint8.Set("-1:2")
 	if varMapInt64Uint8.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt64Uint8,
@@ -1010,7 +1011,7 @@ func TestParseMapInt64Uint8(t *testing.T) {
 func TestParseMapInt64Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Uint16Value{}).Elem()
 	var varMapInt64Uint16 = new(mapInt64Uint16Value)
-	Var(varMapInt64Uint16, "varMapInt64Uint16", "Use mapInt64Uint16")
+	Var(varMapInt64Uint16, "varMapInt64Uint16", "Use mapInt64Uint16", false, false)
 	varMapInt64Uint16.Set("-1:2")
 	if varMapInt64Uint16.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt64Uint16,
@@ -1022,7 +1023,7 @@ func TestParseMapInt64Uint16(t *testing.T) {
 func TestParseMapInt64Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Uint32Value{}).Elem()
 	var varMapInt64Uint32 = new(mapInt64Uint32Value)
-	Var(varMapInt64Uint32, "varMapInt64Uint32", "Use mapInt64Uint32")
+	Var(varMapInt64Uint32, "varMapInt64Uint32", "Use mapInt64Uint32", false, false)
 	varMapInt64Uint32.Set("-1:2")
 	if varMapInt64Uint32.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt64Uint32,
@@ -1034,7 +1035,7 @@ func TestParseMapInt64Uint32(t *testing.T) {
 func TestParseMapInt64Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Uint64Value{}).Elem()
 	var varMapInt64Uint64 = new(mapInt64Uint64Value)
-	Var(varMapInt64Uint64, "varMapInt64Uint64", "Use mapInt64Uint64")
+	Var(varMapInt64Uint64, "varMapInt64Uint64", "Use mapInt64Uint64", false, false)
 	varMapInt64Uint64.Set("-1:2")
 	if varMapInt64Uint64.String() != "-1:2" {
 		t.Fatalf("%v %v %v", varMapInt64Uint64,
@@ -1046,7 +1047,7 @@ func TestParseMapInt64Uint64(t *testing.T) {
 func TestParseMapInt64Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Float64Value{}).Elem()
 	var varMapInt64Float64 = new(mapInt64Float64Value)
-	Var(varMapInt64Float64, "varMapInt64Float64", "Use mapInt64Float64")
+	Var(varMapInt64Float64, "varMapInt64Float64", "Use mapInt64Float64", false, false)
 	varMapInt64Float64.Set("-1:2.71828")
 	if varMapInt64Float64.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt64Float64,
@@ -1058,7 +1059,7 @@ func TestParseMapInt64Float64(t *testing.T) {
 func TestParseMapInt64Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64Float32Value{}).Elem()
 	var varMapInt64Float32 = new(mapInt64Float32Value)
-	Var(varMapInt64Float32, "varMapInt64Float32", "Use mapInt64Float32")
+	Var(varMapInt64Float32, "varMapInt64Float32", "Use mapInt64Float32", false, false)
 	varMapInt64Float32.Set("-1:2.71828")
 	if varMapInt64Float32.String() != "-1:2.71828" {
 		t.Fatalf("%v %v %v", varMapInt64Float32,
@@ -1070,7 +1071,7 @@ func TestParseMapInt64Float32(t *testing.T) {
 func TestParseMapInt64Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64BoolValue{}).Elem()
 	var varMapInt64Bool = new(mapInt64BoolValue)
-	Var(varMapInt64Bool, "varMapInt64Bool", "Use mapInt64Bool")
+	Var(varMapInt64Bool, "varMapInt64Bool", "Use mapInt64Bool", false, false)
 	varMapInt64Bool.Set("-1:true")
 	if varMapInt64Bool.String() != "-1:true" {
 		t.Fatalf("%v %v %v", varMapInt64Bool,
@@ -1082,7 +1083,7 @@ func TestParseMapInt64Bool(t *testing.T) {
 func TestParseMapInt64String(t *testing.T) {
 	// T := reflect.TypeOf(mapInt64StringValue{}).Elem()
 	var varMapInt64String = new(mapInt64StringValue)
-	Var(varMapInt64String, "varMapInt64String", "Use mapInt64String")
+	Var(varMapInt64String, "varMapInt64String", "Use mapInt64String", false, false)
 	varMapInt64String.Set("-1:one")
 	if varMapInt64String.String() != "-1:one" {
 		t.Fatalf("%v %v %v", varMapInt64String,
@@ -1094,7 +1095,7 @@ func TestParseMapInt64String(t *testing.T) {
 func TestParseMapUintDuration(t *testing.T) {
 	// T := reflect.TypeOf(mapUintDurationValue{}).Elem()
 	var varMapUintDuration = new(mapUintDurationValue)
-	Var(varMapUintDuration, "varMapUintDuration", "Use mapUintDuration")
+	Var(varMapUintDuration, "varMapUintDuration", "Use mapUintDuration", false, false)
 	varMapUintDuration.Set("2:1h2m3s")
 	if varMapUintDuration.String() != "2:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapUintDuration,
@@ -1106,7 +1107,7 @@ func TestParseMapUintDuration(t *testing.T) {
 func TestParseMapUintInt(t *testing.T) {
 	// T := reflect.TypeOf(mapUintIntValue{}).Elem()
 	var varMapUintInt = new(mapUintIntValue)
-	Var(varMapUintInt, "varMapUintInt", "Use mapUintInt")
+	Var(varMapUintInt, "varMapUintInt", "Use mapUintInt", false, false)
 	varMapUintInt.Set("2:-1")
 	if varMapUintInt.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUintInt,
@@ -1118,7 +1119,7 @@ func TestParseMapUintInt(t *testing.T) {
 func TestParseMapUintInt8(t *testing.T) {
 	// T := reflect.TypeOf(mapUintInt8Value{}).Elem()
 	var varMapUintInt8 = new(mapUintInt8Value)
-	Var(varMapUintInt8, "varMapUintInt8", "Use mapUintInt8")
+	Var(varMapUintInt8, "varMapUintInt8", "Use mapUintInt8", false, false)
 	varMapUintInt8.Set("2:-1")
 	if varMapUintInt8.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUintInt8,
@@ -1130,7 +1131,7 @@ func TestParseMapUintInt8(t *testing.T) {
 func TestParseMapUintInt16(t *testing.T) {
 	// T := reflect.TypeOf(mapUintInt16Value{}).Elem()
 	var varMapUintInt16 = new(mapUintInt16Value)
-	Var(varMapUintInt16, "varMapUintInt16", "Use mapUintInt16")
+	Var(varMapUintInt16, "varMapUintInt16", "Use mapUintInt16", false, false)
 	varMapUintInt16.Set("2:-1")
 	if varMapUintInt16.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUintInt16,
@@ -1142,7 +1143,7 @@ func TestParseMapUintInt16(t *testing.T) {
 func TestParseMapUintInt32(t *testing.T) {
 	// T := reflect.TypeOf(mapUintInt32Value{}).Elem()
 	var varMapUintInt32 = new(mapUintInt32Value)
-	Var(varMapUintInt32, "varMapUintInt32", "Use mapUintInt32")
+	Var(varMapUintInt32, "varMapUintInt32", "Use mapUintInt32", false, false)
 	varMapUintInt32.Set("2:-1")
 	if varMapUintInt32.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUintInt32,
@@ -1154,7 +1155,7 @@ func TestParseMapUintInt32(t *testing.T) {
 func TestParseMapUintInt64(t *testing.T) {
 	// T := reflect.TypeOf(mapUintInt64Value{}).Elem()
 	var varMapUintInt64 = new(mapUintInt64Value)
-	Var(varMapUintInt64, "varMapUintInt64", "Use mapUintInt64")
+	Var(varMapUintInt64, "varMapUintInt64", "Use mapUintInt64", false, false)
 	varMapUintInt64.Set("2:-1")
 	if varMapUintInt64.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUintInt64,
@@ -1166,7 +1167,7 @@ func TestParseMapUintInt64(t *testing.T) {
 func TestParseMapUintUint(t *testing.T) {
 	// T := reflect.TypeOf(mapUintUintValue{}).Elem()
 	var varMapUintUint = new(mapUintUintValue)
-	Var(varMapUintUint, "varMapUintUint", "Use mapUintUint")
+	Var(varMapUintUint, "varMapUintUint", "Use mapUintUint", false, false)
 	varMapUintUint.Set("2:2")
 	if varMapUintUint.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUintUint,
@@ -1178,7 +1179,7 @@ func TestParseMapUintUint(t *testing.T) {
 func TestParseMapUintUint8(t *testing.T) {
 	// T := reflect.TypeOf(mapUintUint8Value{}).Elem()
 	var varMapUintUint8 = new(mapUintUint8Value)
-	Var(varMapUintUint8, "varMapUintUint8", "Use mapUintUint8")
+	Var(varMapUintUint8, "varMapUintUint8", "Use mapUintUint8", false, false)
 	varMapUintUint8.Set("2:2")
 	if varMapUintUint8.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUintUint8,
@@ -1190,7 +1191,7 @@ func TestParseMapUintUint8(t *testing.T) {
 func TestParseMapUintUint16(t *testing.T) {
 	// T := reflect.TypeOf(mapUintUint16Value{}).Elem()
 	var varMapUintUint16 = new(mapUintUint16Value)
-	Var(varMapUintUint16, "varMapUintUint16", "Use mapUintUint16")
+	Var(varMapUintUint16, "varMapUintUint16", "Use mapUintUint16", false, false)
 	varMapUintUint16.Set("2:2")
 	if varMapUintUint16.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUintUint16,
@@ -1202,7 +1203,7 @@ func TestParseMapUintUint16(t *testing.T) {
 func TestParseMapUintUint32(t *testing.T) {
 	// T := reflect.TypeOf(mapUintUint32Value{}).Elem()
 	var varMapUintUint32 = new(mapUintUint32Value)
-	Var(varMapUintUint32, "varMapUintUint32", "Use mapUintUint32")
+	Var(varMapUintUint32, "varMapUintUint32", "Use mapUintUint32", false, false)
 	varMapUintUint32.Set("2:2")
 	if varMapUintUint32.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUintUint32,
@@ -1214,7 +1215,7 @@ func TestParseMapUintUint32(t *testing.T) {
 func TestParseMapUintUint64(t *testing.T) {
 	// T := reflect.TypeOf(mapUintUint64Value{}).Elem()
 	var varMapUintUint64 = new(mapUintUint64Value)
-	Var(varMapUintUint64, "varMapUintUint64", "Use mapUintUint64")
+	Var(varMapUintUint64, "varMapUintUint64", "Use mapUintUint64", false, false)
 	varMapUintUint64.Set("2:2")
 	if varMapUintUint64.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUintUint64,
@@ -1226,7 +1227,7 @@ func TestParseMapUintUint64(t *testing.T) {
 func TestParseMapUintFloat64(t *testing.T) {
 	// T := reflect.TypeOf(mapUintFloat64Value{}).Elem()
 	var varMapUintFloat64 = new(mapUintFloat64Value)
-	Var(varMapUintFloat64, "varMapUintFloat64", "Use mapUintFloat64")
+	Var(varMapUintFloat64, "varMapUintFloat64", "Use mapUintFloat64", false, false)
 	varMapUintFloat64.Set("2:2.71828")
 	if varMapUintFloat64.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUintFloat64,
@@ -1238,7 +1239,7 @@ func TestParseMapUintFloat64(t *testing.T) {
 func TestParseMapUintFloat32(t *testing.T) {
 	// T := reflect.TypeOf(mapUintFloat32Value{}).Elem()
 	var varMapUintFloat32 = new(mapUintFloat32Value)
-	Var(varMapUintFloat32, "varMapUintFloat32", "Use mapUintFloat32")
+	Var(varMapUintFloat32, "varMapUintFloat32", "Use mapUintFloat32", false, false)
 	varMapUintFloat32.Set("2:2.71828")
 	if varMapUintFloat32.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUintFloat32,
@@ -1250,7 +1251,7 @@ func TestParseMapUintFloat32(t *testing.T) {
 func TestParseMapUintBool(t *testing.T) {
 	// T := reflect.TypeOf(mapUintBoolValue{}).Elem()
 	var varMapUintBool = new(mapUintBoolValue)
-	Var(varMapUintBool, "varMapUintBool", "Use mapUintBool")
+	Var(varMapUintBool, "varMapUintBool", "Use mapUintBool", false, false)
 	varMapUintBool.Set("2:true")
 	if varMapUintBool.String() != "2:true" {
 		t.Fatalf("%v %v %v", varMapUintBool,
@@ -1262,7 +1263,7 @@ func TestParseMapUintBool(t *testing.T) {
 func TestParseMapUintString(t *testing.T) {
 	// T := reflect.TypeOf(mapUintStringValue{}).Elem()
 	var varMapUintString = new(mapUintStringValue)
-	Var(varMapUintString, "varMapUintString", "Use mapUintString")
+	Var(varMapUintString, "varMapUintString", "Use mapUintString", false, false)
 	varMapUintString.Set("2:one")
 	if varMapUintString.String() != "2:one" {
 		t.Fatalf("%v %v %v", varMapUintString,
@@ -1274,7 +1275,7 @@ func TestParseMapUintString(t *testing.T) {
 func TestParseMapUint8Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8DurationValue{}).Elem()
 	var varMapUint8Duration = new(mapUint8DurationValue)
-	Var(varMapUint8Duration, "varMapUint8Duration", "Use mapUint8Duration")
+	Var(varMapUint8Duration, "varMapUint8Duration", "Use mapUint8Duration", false, false)
 	varMapUint8Duration.Set("2:1h2m3s")
 	if varMapUint8Duration.String() != "2:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapUint8Duration,
@@ -1286,7 +1287,7 @@ func TestParseMapUint8Duration(t *testing.T) {
 func TestParseMapUint8Int(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8IntValue{}).Elem()
 	var varMapUint8Int = new(mapUint8IntValue)
-	Var(varMapUint8Int, "varMapUint8Int", "Use mapUint8Int")
+	Var(varMapUint8Int, "varMapUint8Int", "Use mapUint8Int", false, false)
 	varMapUint8Int.Set("2:-1")
 	if varMapUint8Int.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint8Int,
@@ -1298,7 +1299,7 @@ func TestParseMapUint8Int(t *testing.T) {
 func TestParseMapUint8Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Int8Value{}).Elem()
 	var varMapUint8Int8 = new(mapUint8Int8Value)
-	Var(varMapUint8Int8, "varMapUint8Int8", "Use mapUint8Int8")
+	Var(varMapUint8Int8, "varMapUint8Int8", "Use mapUint8Int8", false, false)
 	varMapUint8Int8.Set("2:-1")
 	if varMapUint8Int8.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint8Int8,
@@ -1310,7 +1311,7 @@ func TestParseMapUint8Int8(t *testing.T) {
 func TestParseMapUint8Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Int16Value{}).Elem()
 	var varMapUint8Int16 = new(mapUint8Int16Value)
-	Var(varMapUint8Int16, "varMapUint8Int16", "Use mapUint8Int16")
+	Var(varMapUint8Int16, "varMapUint8Int16", "Use mapUint8Int16", false, false)
 	varMapUint8Int16.Set("2:-1")
 	if varMapUint8Int16.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint8Int16,
@@ -1322,7 +1323,7 @@ func TestParseMapUint8Int16(t *testing.T) {
 func TestParseMapUint8Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Int32Value{}).Elem()
 	var varMapUint8Int32 = new(mapUint8Int32Value)
-	Var(varMapUint8Int32, "varMapUint8Int32", "Use mapUint8Int32")
+	Var(varMapUint8Int32, "varMapUint8Int32", "Use mapUint8Int32", false, false)
 	varMapUint8Int32.Set("2:-1")
 	if varMapUint8Int32.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint8Int32,
@@ -1334,7 +1335,7 @@ func TestParseMapUint8Int32(t *testing.T) {
 func TestParseMapUint8Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Int64Value{}).Elem()
 	var varMapUint8Int64 = new(mapUint8Int64Value)
-	Var(varMapUint8Int64, "varMapUint8Int64", "Use mapUint8Int64")
+	Var(varMapUint8Int64, "varMapUint8Int64", "Use mapUint8Int64", false, false)
 	varMapUint8Int64.Set("2:-1")
 	if varMapUint8Int64.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint8Int64,
@@ -1346,7 +1347,7 @@ func TestParseMapUint8Int64(t *testing.T) {
 func TestParseMapUint8Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8UintValue{}).Elem()
 	var varMapUint8Uint = new(mapUint8UintValue)
-	Var(varMapUint8Uint, "varMapUint8Uint", "Use mapUint8Uint")
+	Var(varMapUint8Uint, "varMapUint8Uint", "Use mapUint8Uint", false, false)
 	varMapUint8Uint.Set("2:2")
 	if varMapUint8Uint.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint8Uint,
@@ -1358,7 +1359,7 @@ func TestParseMapUint8Uint(t *testing.T) {
 func TestParseMapUint8Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Uint8Value{}).Elem()
 	var varMapUint8Uint8 = new(mapUint8Uint8Value)
-	Var(varMapUint8Uint8, "varMapUint8Uint8", "Use mapUint8Uint8")
+	Var(varMapUint8Uint8, "varMapUint8Uint8", "Use mapUint8Uint8", false, false)
 	varMapUint8Uint8.Set("2:2")
 	if varMapUint8Uint8.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint8Uint8,
@@ -1370,7 +1371,7 @@ func TestParseMapUint8Uint8(t *testing.T) {
 func TestParseMapUint8Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Uint16Value{}).Elem()
 	var varMapUint8Uint16 = new(mapUint8Uint16Value)
-	Var(varMapUint8Uint16, "varMapUint8Uint16", "Use mapUint8Uint16")
+	Var(varMapUint8Uint16, "varMapUint8Uint16", "Use mapUint8Uint16", false, false)
 	varMapUint8Uint16.Set("2:2")
 	if varMapUint8Uint16.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint8Uint16,
@@ -1382,7 +1383,7 @@ func TestParseMapUint8Uint16(t *testing.T) {
 func TestParseMapUint8Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Uint32Value{}).Elem()
 	var varMapUint8Uint32 = new(mapUint8Uint32Value)
-	Var(varMapUint8Uint32, "varMapUint8Uint32", "Use mapUint8Uint32")
+	Var(varMapUint8Uint32, "varMapUint8Uint32", "Use mapUint8Uint32", false, false)
 	varMapUint8Uint32.Set("2:2")
 	if varMapUint8Uint32.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint8Uint32,
@@ -1394,7 +1395,7 @@ func TestParseMapUint8Uint32(t *testing.T) {
 func TestParseMapUint8Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Uint64Value{}).Elem()
 	var varMapUint8Uint64 = new(mapUint8Uint64Value)
-	Var(varMapUint8Uint64, "varMapUint8Uint64", "Use mapUint8Uint64")
+	Var(varMapUint8Uint64, "varMapUint8Uint64", "Use mapUint8Uint64", false, false)
 	varMapUint8Uint64.Set("2:2")
 	if varMapUint8Uint64.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint8Uint64,
@@ -1406,7 +1407,7 @@ func TestParseMapUint8Uint64(t *testing.T) {
 func TestParseMapUint8Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Float64Value{}).Elem()
 	var varMapUint8Float64 = new(mapUint8Float64Value)
-	Var(varMapUint8Float64, "varMapUint8Float64", "Use mapUint8Float64")
+	Var(varMapUint8Float64, "varMapUint8Float64", "Use mapUint8Float64", false, false)
 	varMapUint8Float64.Set("2:2.71828")
 	if varMapUint8Float64.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint8Float64,
@@ -1418,7 +1419,7 @@ func TestParseMapUint8Float64(t *testing.T) {
 func TestParseMapUint8Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8Float32Value{}).Elem()
 	var varMapUint8Float32 = new(mapUint8Float32Value)
-	Var(varMapUint8Float32, "varMapUint8Float32", "Use mapUint8Float32")
+	Var(varMapUint8Float32, "varMapUint8Float32", "Use mapUint8Float32", false, false)
 	varMapUint8Float32.Set("2:2.71828")
 	if varMapUint8Float32.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint8Float32,
@@ -1430,7 +1431,7 @@ func TestParseMapUint8Float32(t *testing.T) {
 func TestParseMapUint8Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8BoolValue{}).Elem()
 	var varMapUint8Bool = new(mapUint8BoolValue)
-	Var(varMapUint8Bool, "varMapUint8Bool", "Use mapUint8Bool")
+	Var(varMapUint8Bool, "varMapUint8Bool", "Use mapUint8Bool", false, false)
 	varMapUint8Bool.Set("2:true")
 	if varMapUint8Bool.String() != "2:true" {
 		t.Fatalf("%v %v %v", varMapUint8Bool,
@@ -1442,7 +1443,7 @@ func TestParseMapUint8Bool(t *testing.T) {
 func TestParseMapUint8String(t *testing.T) {
 	// T := reflect.TypeOf(mapUint8StringValue{}).Elem()
 	var varMapUint8String = new(mapUint8StringValue)
-	Var(varMapUint8String, "varMapUint8String", "Use mapUint8String")
+	Var(varMapUint8String, "varMapUint8String", "Use mapUint8String", false, false)
 	varMapUint8String.Set("2:one")
 	if varMapUint8String.String() != "2:one" {
 		t.Fatalf("%v %v %v", varMapUint8String,
@@ -1454,7 +1455,7 @@ func TestParseMapUint8String(t *testing.T) {
 func TestParseMapUint16Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16DurationValue{}).Elem()
 	var varMapUint16Duration = new(mapUint16DurationValue)
-	Var(varMapUint16Duration, "varMapUint16Duration", "Use mapUint16Duration")
+	Var(varMapUint16Duration, "varMapUint16Duration", "Use mapUint16Duration", false, false)
 	varMapUint16Duration.Set("2:1h2m3s")
 	if varMapUint16Duration.String() != "2:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapUint16Duration,
@@ -1466,7 +1467,7 @@ func TestParseMapUint16Duration(t *testing.T) {
 func TestParseMapUint16Int(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16IntValue{}).Elem()
 	var varMapUint16Int = new(mapUint16IntValue)
-	Var(varMapUint16Int, "varMapUint16Int", "Use mapUint16Int")
+	Var(varMapUint16Int, "varMapUint16Int", "Use mapUint16Int", false, false)
 	varMapUint16Int.Set("2:-1")
 	if varMapUint16Int.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint16Int,
@@ -1478,7 +1479,7 @@ func TestParseMapUint16Int(t *testing.T) {
 func TestParseMapUint16Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Int8Value{}).Elem()
 	var varMapUint16Int8 = new(mapUint16Int8Value)
-	Var(varMapUint16Int8, "varMapUint16Int8", "Use mapUint16Int8")
+	Var(varMapUint16Int8, "varMapUint16Int8", "Use mapUint16Int8", false, false)
 	varMapUint16Int8.Set("2:-1")
 	if varMapUint16Int8.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint16Int8,
@@ -1490,7 +1491,7 @@ func TestParseMapUint16Int8(t *testing.T) {
 func TestParseMapUint16Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Int16Value{}).Elem()
 	var varMapUint16Int16 = new(mapUint16Int16Value)
-	Var(varMapUint16Int16, "varMapUint16Int16", "Use mapUint16Int16")
+	Var(varMapUint16Int16, "varMapUint16Int16", "Use mapUint16Int16", false, false)
 	varMapUint16Int16.Set("2:-1")
 	if varMapUint16Int16.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint16Int16,
@@ -1502,7 +1503,7 @@ func TestParseMapUint16Int16(t *testing.T) {
 func TestParseMapUint16Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Int32Value{}).Elem()
 	var varMapUint16Int32 = new(mapUint16Int32Value)
-	Var(varMapUint16Int32, "varMapUint16Int32", "Use mapUint16Int32")
+	Var(varMapUint16Int32, "varMapUint16Int32", "Use mapUint16Int32", false, false)
 	varMapUint16Int32.Set("2:-1")
 	if varMapUint16Int32.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint16Int32,
@@ -1514,7 +1515,7 @@ func TestParseMapUint16Int32(t *testing.T) {
 func TestParseMapUint16Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Int64Value{}).Elem()
 	var varMapUint16Int64 = new(mapUint16Int64Value)
-	Var(varMapUint16Int64, "varMapUint16Int64", "Use mapUint16Int64")
+	Var(varMapUint16Int64, "varMapUint16Int64", "Use mapUint16Int64", false, false)
 	varMapUint16Int64.Set("2:-1")
 	if varMapUint16Int64.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint16Int64,
@@ -1526,7 +1527,7 @@ func TestParseMapUint16Int64(t *testing.T) {
 func TestParseMapUint16Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16UintValue{}).Elem()
 	var varMapUint16Uint = new(mapUint16UintValue)
-	Var(varMapUint16Uint, "varMapUint16Uint", "Use mapUint16Uint")
+	Var(varMapUint16Uint, "varMapUint16Uint", "Use mapUint16Uint", false, false)
 	varMapUint16Uint.Set("2:2")
 	if varMapUint16Uint.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint16Uint,
@@ -1538,7 +1539,7 @@ func TestParseMapUint16Uint(t *testing.T) {
 func TestParseMapUint16Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Uint8Value{}).Elem()
 	var varMapUint16Uint8 = new(mapUint16Uint8Value)
-	Var(varMapUint16Uint8, "varMapUint16Uint8", "Use mapUint16Uint8")
+	Var(varMapUint16Uint8, "varMapUint16Uint8", "Use mapUint16Uint8", false, false)
 	varMapUint16Uint8.Set("2:2")
 	if varMapUint16Uint8.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint16Uint8,
@@ -1550,7 +1551,7 @@ func TestParseMapUint16Uint8(t *testing.T) {
 func TestParseMapUint16Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Uint16Value{}).Elem()
 	var varMapUint16Uint16 = new(mapUint16Uint16Value)
-	Var(varMapUint16Uint16, "varMapUint16Uint16", "Use mapUint16Uint16")
+	Var(varMapUint16Uint16, "varMapUint16Uint16", "Use mapUint16Uint16", false, false)
 	varMapUint16Uint16.Set("2:2")
 	if varMapUint16Uint16.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint16Uint16,
@@ -1562,7 +1563,7 @@ func TestParseMapUint16Uint16(t *testing.T) {
 func TestParseMapUint16Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Uint32Value{}).Elem()
 	var varMapUint16Uint32 = new(mapUint16Uint32Value)
-	Var(varMapUint16Uint32, "varMapUint16Uint32", "Use mapUint16Uint32")
+	Var(varMapUint16Uint32, "varMapUint16Uint32", "Use mapUint16Uint32", false, false)
 	varMapUint16Uint32.Set("2:2")
 	if varMapUint16Uint32.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint16Uint32,
@@ -1574,7 +1575,7 @@ func TestParseMapUint16Uint32(t *testing.T) {
 func TestParseMapUint16Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Uint64Value{}).Elem()
 	var varMapUint16Uint64 = new(mapUint16Uint64Value)
-	Var(varMapUint16Uint64, "varMapUint16Uint64", "Use mapUint16Uint64")
+	Var(varMapUint16Uint64, "varMapUint16Uint64", "Use mapUint16Uint64", false, false)
 	varMapUint16Uint64.Set("2:2")
 	if varMapUint16Uint64.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint16Uint64,
@@ -1586,7 +1587,7 @@ func TestParseMapUint16Uint64(t *testing.T) {
 func TestParseMapUint16Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Float64Value{}).Elem()
 	var varMapUint16Float64 = new(mapUint16Float64Value)
-	Var(varMapUint16Float64, "varMapUint16Float64", "Use mapUint16Float64")
+	Var(varMapUint16Float64, "varMapUint16Float64", "Use mapUint16Float64", false, false)
 	varMapUint16Float64.Set("2:2.71828")
 	if varMapUint16Float64.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint16Float64,
@@ -1598,7 +1599,7 @@ func TestParseMapUint16Float64(t *testing.T) {
 func TestParseMapUint16Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16Float32Value{}).Elem()
 	var varMapUint16Float32 = new(mapUint16Float32Value)
-	Var(varMapUint16Float32, "varMapUint16Float32", "Use mapUint16Float32")
+	Var(varMapUint16Float32, "varMapUint16Float32", "Use mapUint16Float32", false, false)
 	varMapUint16Float32.Set("2:2.71828")
 	if varMapUint16Float32.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint16Float32,
@@ -1610,7 +1611,7 @@ func TestParseMapUint16Float32(t *testing.T) {
 func TestParseMapUint16Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16BoolValue{}).Elem()
 	var varMapUint16Bool = new(mapUint16BoolValue)
-	Var(varMapUint16Bool, "varMapUint16Bool", "Use mapUint16Bool")
+	Var(varMapUint16Bool, "varMapUint16Bool", "Use mapUint16Bool", false, false)
 	varMapUint16Bool.Set("2:true")
 	if varMapUint16Bool.String() != "2:true" {
 		t.Fatalf("%v %v %v", varMapUint16Bool,
@@ -1622,7 +1623,7 @@ func TestParseMapUint16Bool(t *testing.T) {
 func TestParseMapUint16String(t *testing.T) {
 	// T := reflect.TypeOf(mapUint16StringValue{}).Elem()
 	var varMapUint16String = new(mapUint16StringValue)
-	Var(varMapUint16String, "varMapUint16String", "Use mapUint16String")
+	Var(varMapUint16String, "varMapUint16String", "Use mapUint16String", false, false)
 	varMapUint16String.Set("2:one")
 	if varMapUint16String.String() != "2:one" {
 		t.Fatalf("%v %v %v", varMapUint16String,
@@ -1634,7 +1635,7 @@ func TestParseMapUint16String(t *testing.T) {
 func TestParseMapUint32Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32DurationValue{}).Elem()
 	var varMapUint32Duration = new(mapUint32DurationValue)
-	Var(varMapUint32Duration, "varMapUint32Duration", "Use mapUint32Duration")
+	Var(varMapUint32Duration, "varMapUint32Duration", "Use mapUint32Duration", false, false)
 	varMapUint32Duration.Set("2:1h2m3s")
 	if varMapUint32Duration.String() != "2:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapUint32Duration,
@@ -1646,7 +1647,7 @@ func TestParseMapUint32Duration(t *testing.T) {
 func TestParseMapUint32Int(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32IntValue{}).Elem()
 	var varMapUint32Int = new(mapUint32IntValue)
-	Var(varMapUint32Int, "varMapUint32Int", "Use mapUint32Int")
+	Var(varMapUint32Int, "varMapUint32Int", "Use mapUint32Int", false, false)
 	varMapUint32Int.Set("2:-1")
 	if varMapUint32Int.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint32Int,
@@ -1658,7 +1659,7 @@ func TestParseMapUint32Int(t *testing.T) {
 func TestParseMapUint32Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Int8Value{}).Elem()
 	var varMapUint32Int8 = new(mapUint32Int8Value)
-	Var(varMapUint32Int8, "varMapUint32Int8", "Use mapUint32Int8")
+	Var(varMapUint32Int8, "varMapUint32Int8", "Use mapUint32Int8", false, false)
 	varMapUint32Int8.Set("2:-1")
 	if varMapUint32Int8.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint32Int8,
@@ -1670,7 +1671,7 @@ func TestParseMapUint32Int8(t *testing.T) {
 func TestParseMapUint32Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Int16Value{}).Elem()
 	var varMapUint32Int16 = new(mapUint32Int16Value)
-	Var(varMapUint32Int16, "varMapUint32Int16", "Use mapUint32Int16")
+	Var(varMapUint32Int16, "varMapUint32Int16", "Use mapUint32Int16", false, false)
 	varMapUint32Int16.Set("2:-1")
 	if varMapUint32Int16.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint32Int16,
@@ -1682,7 +1683,7 @@ func TestParseMapUint32Int16(t *testing.T) {
 func TestParseMapUint32Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Int32Value{}).Elem()
 	var varMapUint32Int32 = new(mapUint32Int32Value)
-	Var(varMapUint32Int32, "varMapUint32Int32", "Use mapUint32Int32")
+	Var(varMapUint32Int32, "varMapUint32Int32", "Use mapUint32Int32", false, false)
 	varMapUint32Int32.Set("2:-1")
 	if varMapUint32Int32.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint32Int32,
@@ -1694,7 +1695,7 @@ func TestParseMapUint32Int32(t *testing.T) {
 func TestParseMapUint32Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Int64Value{}).Elem()
 	var varMapUint32Int64 = new(mapUint32Int64Value)
-	Var(varMapUint32Int64, "varMapUint32Int64", "Use mapUint32Int64")
+	Var(varMapUint32Int64, "varMapUint32Int64", "Use mapUint32Int64", false, false)
 	varMapUint32Int64.Set("2:-1")
 	if varMapUint32Int64.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint32Int64,
@@ -1706,7 +1707,7 @@ func TestParseMapUint32Int64(t *testing.T) {
 func TestParseMapUint32Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32UintValue{}).Elem()
 	var varMapUint32Uint = new(mapUint32UintValue)
-	Var(varMapUint32Uint, "varMapUint32Uint", "Use mapUint32Uint")
+	Var(varMapUint32Uint, "varMapUint32Uint", "Use mapUint32Uint", false, false)
 	varMapUint32Uint.Set("2:2")
 	if varMapUint32Uint.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint32Uint,
@@ -1718,7 +1719,7 @@ func TestParseMapUint32Uint(t *testing.T) {
 func TestParseMapUint32Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Uint8Value{}).Elem()
 	var varMapUint32Uint8 = new(mapUint32Uint8Value)
-	Var(varMapUint32Uint8, "varMapUint32Uint8", "Use mapUint32Uint8")
+	Var(varMapUint32Uint8, "varMapUint32Uint8", "Use mapUint32Uint8", false, false)
 	varMapUint32Uint8.Set("2:2")
 	if varMapUint32Uint8.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint32Uint8,
@@ -1730,7 +1731,7 @@ func TestParseMapUint32Uint8(t *testing.T) {
 func TestParseMapUint32Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Uint16Value{}).Elem()
 	var varMapUint32Uint16 = new(mapUint32Uint16Value)
-	Var(varMapUint32Uint16, "varMapUint32Uint16", "Use mapUint32Uint16")
+	Var(varMapUint32Uint16, "varMapUint32Uint16", "Use mapUint32Uint16", false, false)
 	varMapUint32Uint16.Set("2:2")
 	if varMapUint32Uint16.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint32Uint16,
@@ -1742,7 +1743,7 @@ func TestParseMapUint32Uint16(t *testing.T) {
 func TestParseMapUint32Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Uint32Value{}).Elem()
 	var varMapUint32Uint32 = new(mapUint32Uint32Value)
-	Var(varMapUint32Uint32, "varMapUint32Uint32", "Use mapUint32Uint32")
+	Var(varMapUint32Uint32, "varMapUint32Uint32", "Use mapUint32Uint32", false, false)
 	varMapUint32Uint32.Set("2:2")
 	if varMapUint32Uint32.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint32Uint32,
@@ -1754,7 +1755,7 @@ func TestParseMapUint32Uint32(t *testing.T) {
 func TestParseMapUint32Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Uint64Value{}).Elem()
 	var varMapUint32Uint64 = new(mapUint32Uint64Value)
-	Var(varMapUint32Uint64, "varMapUint32Uint64", "Use mapUint32Uint64")
+	Var(varMapUint32Uint64, "varMapUint32Uint64", "Use mapUint32Uint64", false, false)
 	varMapUint32Uint64.Set("2:2")
 	if varMapUint32Uint64.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint32Uint64,
@@ -1766,7 +1767,7 @@ func TestParseMapUint32Uint64(t *testing.T) {
 func TestParseMapUint32Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Float64Value{}).Elem()
 	var varMapUint32Float64 = new(mapUint32Float64Value)
-	Var(varMapUint32Float64, "varMapUint32Float64", "Use mapUint32Float64")
+	Var(varMapUint32Float64, "varMapUint32Float64", "Use mapUint32Float64", false, false)
 	varMapUint32Float64.Set("2:2.71828")
 	if varMapUint32Float64.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint32Float64,
@@ -1778,7 +1779,7 @@ func TestParseMapUint32Float64(t *testing.T) {
 func TestParseMapUint32Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32Float32Value{}).Elem()
 	var varMapUint32Float32 = new(mapUint32Float32Value)
-	Var(varMapUint32Float32, "varMapUint32Float32", "Use mapUint32Float32")
+	Var(varMapUint32Float32, "varMapUint32Float32", "Use mapUint32Float32", false, false)
 	varMapUint32Float32.Set("2:2.71828")
 	if varMapUint32Float32.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint32Float32,
@@ -1790,7 +1791,7 @@ func TestParseMapUint32Float32(t *testing.T) {
 func TestParseMapUint32Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32BoolValue{}).Elem()
 	var varMapUint32Bool = new(mapUint32BoolValue)
-	Var(varMapUint32Bool, "varMapUint32Bool", "Use mapUint32Bool")
+	Var(varMapUint32Bool, "varMapUint32Bool", "Use mapUint32Bool", false, false)
 	varMapUint32Bool.Set("2:true")
 	if varMapUint32Bool.String() != "2:true" {
 		t.Fatalf("%v %v %v", varMapUint32Bool,
@@ -1802,7 +1803,7 @@ func TestParseMapUint32Bool(t *testing.T) {
 func TestParseMapUint32String(t *testing.T) {
 	// T := reflect.TypeOf(mapUint32StringValue{}).Elem()
 	var varMapUint32String = new(mapUint32StringValue)
-	Var(varMapUint32String, "varMapUint32String", "Use mapUint32String")
+	Var(varMapUint32String, "varMapUint32String", "Use mapUint32String", false, false)
 	varMapUint32String.Set("2:one")
 	if varMapUint32String.String() != "2:one" {
 		t.Fatalf("%v %v %v", varMapUint32String,
@@ -1814,7 +1815,7 @@ func TestParseMapUint32String(t *testing.T) {
 func TestParseMapUint64Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64DurationValue{}).Elem()
 	var varMapUint64Duration = new(mapUint64DurationValue)
-	Var(varMapUint64Duration, "varMapUint64Duration", "Use mapUint64Duration")
+	Var(varMapUint64Duration, "varMapUint64Duration", "Use mapUint64Duration", false, false)
 	varMapUint64Duration.Set("2:1h2m3s")
 	if varMapUint64Duration.String() != "2:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapUint64Duration,
@@ -1826,7 +1827,7 @@ func TestParseMapUint64Duration(t *testing.T) {
 func TestParseMapUint64Int(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64IntValue{}).Elem()
 	var varMapUint64Int = new(mapUint64IntValue)
-	Var(varMapUint64Int, "varMapUint64Int", "Use mapUint64Int")
+	Var(varMapUint64Int, "varMapUint64Int", "Use mapUint64Int", false, false)
 	varMapUint64Int.Set("2:-1")
 	if varMapUint64Int.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint64Int,
@@ -1838,7 +1839,7 @@ func TestParseMapUint64Int(t *testing.T) {
 func TestParseMapUint64Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Int8Value{}).Elem()
 	var varMapUint64Int8 = new(mapUint64Int8Value)
-	Var(varMapUint64Int8, "varMapUint64Int8", "Use mapUint64Int8")
+	Var(varMapUint64Int8, "varMapUint64Int8", "Use mapUint64Int8", false, false)
 	varMapUint64Int8.Set("2:-1")
 	if varMapUint64Int8.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint64Int8,
@@ -1850,7 +1851,7 @@ func TestParseMapUint64Int8(t *testing.T) {
 func TestParseMapUint64Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Int16Value{}).Elem()
 	var varMapUint64Int16 = new(mapUint64Int16Value)
-	Var(varMapUint64Int16, "varMapUint64Int16", "Use mapUint64Int16")
+	Var(varMapUint64Int16, "varMapUint64Int16", "Use mapUint64Int16", false, false)
 	varMapUint64Int16.Set("2:-1")
 	if varMapUint64Int16.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint64Int16,
@@ -1862,7 +1863,7 @@ func TestParseMapUint64Int16(t *testing.T) {
 func TestParseMapUint64Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Int32Value{}).Elem()
 	var varMapUint64Int32 = new(mapUint64Int32Value)
-	Var(varMapUint64Int32, "varMapUint64Int32", "Use mapUint64Int32")
+	Var(varMapUint64Int32, "varMapUint64Int32", "Use mapUint64Int32", false, false)
 	varMapUint64Int32.Set("2:-1")
 	if varMapUint64Int32.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint64Int32,
@@ -1874,7 +1875,7 @@ func TestParseMapUint64Int32(t *testing.T) {
 func TestParseMapUint64Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Int64Value{}).Elem()
 	var varMapUint64Int64 = new(mapUint64Int64Value)
-	Var(varMapUint64Int64, "varMapUint64Int64", "Use mapUint64Int64")
+	Var(varMapUint64Int64, "varMapUint64Int64", "Use mapUint64Int64", false, false)
 	varMapUint64Int64.Set("2:-1")
 	if varMapUint64Int64.String() != "2:-1" {
 		t.Fatalf("%v %v %v", varMapUint64Int64,
@@ -1886,7 +1887,7 @@ func TestParseMapUint64Int64(t *testing.T) {
 func TestParseMapUint64Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64UintValue{}).Elem()
 	var varMapUint64Uint = new(mapUint64UintValue)
-	Var(varMapUint64Uint, "varMapUint64Uint", "Use mapUint64Uint")
+	Var(varMapUint64Uint, "varMapUint64Uint", "Use mapUint64Uint", false, false)
 	varMapUint64Uint.Set("2:2")
 	if varMapUint64Uint.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint64Uint,
@@ -1898,7 +1899,7 @@ func TestParseMapUint64Uint(t *testing.T) {
 func TestParseMapUint64Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Uint8Value{}).Elem()
 	var varMapUint64Uint8 = new(mapUint64Uint8Value)
-	Var(varMapUint64Uint8, "varMapUint64Uint8", "Use mapUint64Uint8")
+	Var(varMapUint64Uint8, "varMapUint64Uint8", "Use mapUint64Uint8", false, false)
 	varMapUint64Uint8.Set("2:2")
 	if varMapUint64Uint8.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint64Uint8,
@@ -1910,7 +1911,7 @@ func TestParseMapUint64Uint8(t *testing.T) {
 func TestParseMapUint64Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Uint16Value{}).Elem()
 	var varMapUint64Uint16 = new(mapUint64Uint16Value)
-	Var(varMapUint64Uint16, "varMapUint64Uint16", "Use mapUint64Uint16")
+	Var(varMapUint64Uint16, "varMapUint64Uint16", "Use mapUint64Uint16", false, false)
 	varMapUint64Uint16.Set("2:2")
 	if varMapUint64Uint16.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint64Uint16,
@@ -1922,7 +1923,7 @@ func TestParseMapUint64Uint16(t *testing.T) {
 func TestParseMapUint64Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Uint32Value{}).Elem()
 	var varMapUint64Uint32 = new(mapUint64Uint32Value)
-	Var(varMapUint64Uint32, "varMapUint64Uint32", "Use mapUint64Uint32")
+	Var(varMapUint64Uint32, "varMapUint64Uint32", "Use mapUint64Uint32", false, false)
 	varMapUint64Uint32.Set("2:2")
 	if varMapUint64Uint32.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint64Uint32,
@@ -1934,7 +1935,7 @@ func TestParseMapUint64Uint32(t *testing.T) {
 func TestParseMapUint64Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Uint64Value{}).Elem()
 	var varMapUint64Uint64 = new(mapUint64Uint64Value)
-	Var(varMapUint64Uint64, "varMapUint64Uint64", "Use mapUint64Uint64")
+	Var(varMapUint64Uint64, "varMapUint64Uint64", "Use mapUint64Uint64", false, false)
 	varMapUint64Uint64.Set("2:2")
 	if varMapUint64Uint64.String() != "2:2" {
 		t.Fatalf("%v %v %v", varMapUint64Uint64,
@@ -1946,7 +1947,7 @@ func TestParseMapUint64Uint64(t *testing.T) {
 func TestParseMapUint64Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Float64Value{}).Elem()
 	var varMapUint64Float64 = new(mapUint64Float64Value)
-	Var(varMapUint64Float64, "varMapUint64Float64", "Use mapUint64Float64")
+	Var(varMapUint64Float64, "varMapUint64Float64", "Use mapUint64Float64", false, false)
 	varMapUint64Float64.Set("2:2.71828")
 	if varMapUint64Float64.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint64Float64,
@@ -1958,7 +1959,7 @@ func TestParseMapUint64Float64(t *testing.T) {
 func TestParseMapUint64Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64Float32Value{}).Elem()
 	var varMapUint64Float32 = new(mapUint64Float32Value)
-	Var(varMapUint64Float32, "varMapUint64Float32", "Use mapUint64Float32")
+	Var(varMapUint64Float32, "varMapUint64Float32", "Use mapUint64Float32", false, false)
 	varMapUint64Float32.Set("2:2.71828")
 	if varMapUint64Float32.String() != "2:2.71828" {
 		t.Fatalf("%v %v %v", varMapUint64Float32,
@@ -1970,7 +1971,7 @@ func TestParseMapUint64Float32(t *testing.T) {
 func TestParseMapUint64Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64BoolValue{}).Elem()
 	var varMapUint64Bool = new(mapUint64BoolValue)
-	Var(varMapUint64Bool, "varMapUint64Bool", "Use mapUint64Bool")
+	Var(varMapUint64Bool, "varMapUint64Bool", "Use mapUint64Bool", false, false)
 	varMapUint64Bool.Set("2:true")
 	if varMapUint64Bool.String() != "2:true" {
 		t.Fatalf("%v %v %v", varMapUint64Bool,
@@ -1982,7 +1983,7 @@ func TestParseMapUint64Bool(t *testing.T) {
 func TestParseMapUint64String(t *testing.T) {
 	// T := reflect.TypeOf(mapUint64StringValue{}).Elem()
 	var varMapUint64String = new(mapUint64StringValue)
-	Var(varMapUint64String, "varMapUint64String", "Use mapUint64String")
+	Var(varMapUint64String, "varMapUint64String", "Use mapUint64String", false, false)
 	varMapUint64String.Set("2:one")
 	if varMapUint64String.String() != "2:one" {
 		t.Fatalf("%v %v %v", varMapUint64String,
@@ -1994,7 +1995,7 @@ func TestParseMapUint64String(t *testing.T) {
 func TestParseMapFloat64Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64DurationValue{}).Elem()
 	var varMapFloat64Duration = new(mapFloat64DurationValue)
-	Var(varMapFloat64Duration, "varMapFloat64Duration", "Use mapFloat64Duration")
+	Var(varMapFloat64Duration, "varMapFloat64Duration", "Use mapFloat64Duration", false, false)
 	varMapFloat64Duration.Set("2.71828:1h2m3s")
 	if varMapFloat64Duration.String() != "2.71828:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapFloat64Duration,
@@ -2006,7 +2007,7 @@ func TestParseMapFloat64Duration(t *testing.T) {
 func TestParseMapFloat64Int(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64IntValue{}).Elem()
 	var varMapFloat64Int = new(mapFloat64IntValue)
-	Var(varMapFloat64Int, "varMapFloat64Int", "Use mapFloat64Int")
+	Var(varMapFloat64Int, "varMapFloat64Int", "Use mapFloat64Int", false, false)
 	varMapFloat64Int.Set("2.71828:-1")
 	if varMapFloat64Int.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat64Int,
@@ -2018,7 +2019,7 @@ func TestParseMapFloat64Int(t *testing.T) {
 func TestParseMapFloat64Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Int8Value{}).Elem()
 	var varMapFloat64Int8 = new(mapFloat64Int8Value)
-	Var(varMapFloat64Int8, "varMapFloat64Int8", "Use mapFloat64Int8")
+	Var(varMapFloat64Int8, "varMapFloat64Int8", "Use mapFloat64Int8", false, false)
 	varMapFloat64Int8.Set("2.71828:-1")
 	if varMapFloat64Int8.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat64Int8,
@@ -2030,7 +2031,7 @@ func TestParseMapFloat64Int8(t *testing.T) {
 func TestParseMapFloat64Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Int16Value{}).Elem()
 	var varMapFloat64Int16 = new(mapFloat64Int16Value)
-	Var(varMapFloat64Int16, "varMapFloat64Int16", "Use mapFloat64Int16")
+	Var(varMapFloat64Int16, "varMapFloat64Int16", "Use mapFloat64Int16", false, false)
 	varMapFloat64Int16.Set("2.71828:-1")
 	if varMapFloat64Int16.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat64Int16,
@@ -2042,7 +2043,7 @@ func TestParseMapFloat64Int16(t *testing.T) {
 func TestParseMapFloat64Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Int32Value{}).Elem()
 	var varMapFloat64Int32 = new(mapFloat64Int32Value)
-	Var(varMapFloat64Int32, "varMapFloat64Int32", "Use mapFloat64Int32")
+	Var(varMapFloat64Int32, "varMapFloat64Int32", "Use mapFloat64Int32", false, false)
 	varMapFloat64Int32.Set("2.71828:-1")
 	if varMapFloat64Int32.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat64Int32,
@@ -2054,7 +2055,7 @@ func TestParseMapFloat64Int32(t *testing.T) {
 func TestParseMapFloat64Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Int64Value{}).Elem()
 	var varMapFloat64Int64 = new(mapFloat64Int64Value)
-	Var(varMapFloat64Int64, "varMapFloat64Int64", "Use mapFloat64Int64")
+	Var(varMapFloat64Int64, "varMapFloat64Int64", "Use mapFloat64Int64", false, false)
 	varMapFloat64Int64.Set("2.71828:-1")
 	if varMapFloat64Int64.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat64Int64,
@@ -2066,7 +2067,7 @@ func TestParseMapFloat64Int64(t *testing.T) {
 func TestParseMapFloat64Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64UintValue{}).Elem()
 	var varMapFloat64Uint = new(mapFloat64UintValue)
-	Var(varMapFloat64Uint, "varMapFloat64Uint", "Use mapFloat64Uint")
+	Var(varMapFloat64Uint, "varMapFloat64Uint", "Use mapFloat64Uint", false, false)
 	varMapFloat64Uint.Set("2.71828:2")
 	if varMapFloat64Uint.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat64Uint,
@@ -2078,7 +2079,7 @@ func TestParseMapFloat64Uint(t *testing.T) {
 func TestParseMapFloat64Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Uint8Value{}).Elem()
 	var varMapFloat64Uint8 = new(mapFloat64Uint8Value)
-	Var(varMapFloat64Uint8, "varMapFloat64Uint8", "Use mapFloat64Uint8")
+	Var(varMapFloat64Uint8, "varMapFloat64Uint8", "Use mapFloat64Uint8", false, false)
 	varMapFloat64Uint8.Set("2.71828:2")
 	if varMapFloat64Uint8.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat64Uint8,
@@ -2090,7 +2091,7 @@ func TestParseMapFloat64Uint8(t *testing.T) {
 func TestParseMapFloat64Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Uint16Value{}).Elem()
 	var varMapFloat64Uint16 = new(mapFloat64Uint16Value)
-	Var(varMapFloat64Uint16, "varMapFloat64Uint16", "Use mapFloat64Uint16")
+	Var(varMapFloat64Uint16, "varMapFloat64Uint16", "Use mapFloat64Uint16", false, false)
 	varMapFloat64Uint16.Set("2.71828:2")
 	if varMapFloat64Uint16.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat64Uint16,
@@ -2102,7 +2103,7 @@ func TestParseMapFloat64Uint16(t *testing.T) {
 func TestParseMapFloat64Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Uint32Value{}).Elem()
 	var varMapFloat64Uint32 = new(mapFloat64Uint32Value)
-	Var(varMapFloat64Uint32, "varMapFloat64Uint32", "Use mapFloat64Uint32")
+	Var(varMapFloat64Uint32, "varMapFloat64Uint32", "Use mapFloat64Uint32", false, false)
 	varMapFloat64Uint32.Set("2.71828:2")
 	if varMapFloat64Uint32.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat64Uint32,
@@ -2114,7 +2115,7 @@ func TestParseMapFloat64Uint32(t *testing.T) {
 func TestParseMapFloat64Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Uint64Value{}).Elem()
 	var varMapFloat64Uint64 = new(mapFloat64Uint64Value)
-	Var(varMapFloat64Uint64, "varMapFloat64Uint64", "Use mapFloat64Uint64")
+	Var(varMapFloat64Uint64, "varMapFloat64Uint64", "Use mapFloat64Uint64", false, false)
 	varMapFloat64Uint64.Set("2.71828:2")
 	if varMapFloat64Uint64.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat64Uint64,
@@ -2126,7 +2127,7 @@ func TestParseMapFloat64Uint64(t *testing.T) {
 func TestParseMapFloat64Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Float64Value{}).Elem()
 	var varMapFloat64Float64 = new(mapFloat64Float64Value)
-	Var(varMapFloat64Float64, "varMapFloat64Float64", "Use mapFloat64Float64")
+	Var(varMapFloat64Float64, "varMapFloat64Float64", "Use mapFloat64Float64", false, false)
 	varMapFloat64Float64.Set("2.71828:2.71828")
 	if varMapFloat64Float64.String() != "2.71828:2.71828" {
 		t.Fatalf("%v %v %v", varMapFloat64Float64,
@@ -2138,7 +2139,7 @@ func TestParseMapFloat64Float64(t *testing.T) {
 func TestParseMapFloat64Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64Float32Value{}).Elem()
 	var varMapFloat64Float32 = new(mapFloat64Float32Value)
-	Var(varMapFloat64Float32, "varMapFloat64Float32", "Use mapFloat64Float32")
+	Var(varMapFloat64Float32, "varMapFloat64Float32", "Use mapFloat64Float32", false, false)
 	varMapFloat64Float32.Set("2.71828:2.71828")
 	if varMapFloat64Float32.String() != "2.71828:2.71828" {
 		t.Fatalf("%v %v %v", varMapFloat64Float32,
@@ -2150,7 +2151,7 @@ func TestParseMapFloat64Float32(t *testing.T) {
 func TestParseMapFloat64Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64BoolValue{}).Elem()
 	var varMapFloat64Bool = new(mapFloat64BoolValue)
-	Var(varMapFloat64Bool, "varMapFloat64Bool", "Use mapFloat64Bool")
+	Var(varMapFloat64Bool, "varMapFloat64Bool", "Use mapFloat64Bool", false, false)
 	varMapFloat64Bool.Set("2.71828:true")
 	if varMapFloat64Bool.String() != "2.71828:true" {
 		t.Fatalf("%v %v %v", varMapFloat64Bool,
@@ -2162,7 +2163,7 @@ func TestParseMapFloat64Bool(t *testing.T) {
 func TestParseMapFloat64String(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat64StringValue{}).Elem()
 	var varMapFloat64String = new(mapFloat64StringValue)
-	Var(varMapFloat64String, "varMapFloat64String", "Use mapFloat64String")
+	Var(varMapFloat64String, "varMapFloat64String", "Use mapFloat64String", false, false)
 	varMapFloat64String.Set("2.71828:one")
 	if varMapFloat64String.String() != "2.71828:one" {
 		t.Fatalf("%v %v %v", varMapFloat64String,
@@ -2174,7 +2175,7 @@ func TestParseMapFloat64String(t *testing.T) {
 func TestParseMapFloat32Duration(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32DurationValue{}).Elem()
 	var varMapFloat32Duration = new(mapFloat32DurationValue)
-	Var(varMapFloat32Duration, "varMapFloat32Duration", "Use mapFloat32Duration")
+	Var(varMapFloat32Duration, "varMapFloat32Duration", "Use mapFloat32Duration", false, false)
 	varMapFloat32Duration.Set("2.71828:1h2m3s")
 	if varMapFloat32Duration.String() != "2.71828:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapFloat32Duration,
@@ -2186,7 +2187,7 @@ func TestParseMapFloat32Duration(t *testing.T) {
 func TestParseMapFloat32Int(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32IntValue{}).Elem()
 	var varMapFloat32Int = new(mapFloat32IntValue)
-	Var(varMapFloat32Int, "varMapFloat32Int", "Use mapFloat32Int")
+	Var(varMapFloat32Int, "varMapFloat32Int", "Use mapFloat32Int", false, false)
 	varMapFloat32Int.Set("2.71828:-1")
 	if varMapFloat32Int.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat32Int,
@@ -2198,7 +2199,7 @@ func TestParseMapFloat32Int(t *testing.T) {
 func TestParseMapFloat32Int8(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Int8Value{}).Elem()
 	var varMapFloat32Int8 = new(mapFloat32Int8Value)
-	Var(varMapFloat32Int8, "varMapFloat32Int8", "Use mapFloat32Int8")
+	Var(varMapFloat32Int8, "varMapFloat32Int8", "Use mapFloat32Int8", false, false)
 	varMapFloat32Int8.Set("2.71828:-1")
 	if varMapFloat32Int8.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat32Int8,
@@ -2210,7 +2211,7 @@ func TestParseMapFloat32Int8(t *testing.T) {
 func TestParseMapFloat32Int16(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Int16Value{}).Elem()
 	var varMapFloat32Int16 = new(mapFloat32Int16Value)
-	Var(varMapFloat32Int16, "varMapFloat32Int16", "Use mapFloat32Int16")
+	Var(varMapFloat32Int16, "varMapFloat32Int16", "Use mapFloat32Int16", false, false)
 	varMapFloat32Int16.Set("2.71828:-1")
 	if varMapFloat32Int16.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat32Int16,
@@ -2222,7 +2223,7 @@ func TestParseMapFloat32Int16(t *testing.T) {
 func TestParseMapFloat32Int32(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Int32Value{}).Elem()
 	var varMapFloat32Int32 = new(mapFloat32Int32Value)
-	Var(varMapFloat32Int32, "varMapFloat32Int32", "Use mapFloat32Int32")
+	Var(varMapFloat32Int32, "varMapFloat32Int32", "Use mapFloat32Int32", false, false)
 	varMapFloat32Int32.Set("2.71828:-1")
 	if varMapFloat32Int32.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat32Int32,
@@ -2234,7 +2235,7 @@ func TestParseMapFloat32Int32(t *testing.T) {
 func TestParseMapFloat32Int64(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Int64Value{}).Elem()
 	var varMapFloat32Int64 = new(mapFloat32Int64Value)
-	Var(varMapFloat32Int64, "varMapFloat32Int64", "Use mapFloat32Int64")
+	Var(varMapFloat32Int64, "varMapFloat32Int64", "Use mapFloat32Int64", false, false)
 	varMapFloat32Int64.Set("2.71828:-1")
 	if varMapFloat32Int64.String() != "2.71828:-1" {
 		t.Fatalf("%v %v %v", varMapFloat32Int64,
@@ -2246,7 +2247,7 @@ func TestParseMapFloat32Int64(t *testing.T) {
 func TestParseMapFloat32Uint(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32UintValue{}).Elem()
 	var varMapFloat32Uint = new(mapFloat32UintValue)
-	Var(varMapFloat32Uint, "varMapFloat32Uint", "Use mapFloat32Uint")
+	Var(varMapFloat32Uint, "varMapFloat32Uint", "Use mapFloat32Uint", false, false)
 	varMapFloat32Uint.Set("2.71828:2")
 	if varMapFloat32Uint.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat32Uint,
@@ -2258,7 +2259,7 @@ func TestParseMapFloat32Uint(t *testing.T) {
 func TestParseMapFloat32Uint8(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Uint8Value{}).Elem()
 	var varMapFloat32Uint8 = new(mapFloat32Uint8Value)
-	Var(varMapFloat32Uint8, "varMapFloat32Uint8", "Use mapFloat32Uint8")
+	Var(varMapFloat32Uint8, "varMapFloat32Uint8", "Use mapFloat32Uint8", false, false)
 	varMapFloat32Uint8.Set("2.71828:2")
 	if varMapFloat32Uint8.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat32Uint8,
@@ -2270,7 +2271,7 @@ func TestParseMapFloat32Uint8(t *testing.T) {
 func TestParseMapFloat32Uint16(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Uint16Value{}).Elem()
 	var varMapFloat32Uint16 = new(mapFloat32Uint16Value)
-	Var(varMapFloat32Uint16, "varMapFloat32Uint16", "Use mapFloat32Uint16")
+	Var(varMapFloat32Uint16, "varMapFloat32Uint16", "Use mapFloat32Uint16", false, false)
 	varMapFloat32Uint16.Set("2.71828:2")
 	if varMapFloat32Uint16.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat32Uint16,
@@ -2282,7 +2283,7 @@ func TestParseMapFloat32Uint16(t *testing.T) {
 func TestParseMapFloat32Uint32(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Uint32Value{}).Elem()
 	var varMapFloat32Uint32 = new(mapFloat32Uint32Value)
-	Var(varMapFloat32Uint32, "varMapFloat32Uint32", "Use mapFloat32Uint32")
+	Var(varMapFloat32Uint32, "varMapFloat32Uint32", "Use mapFloat32Uint32", false, false)
 	varMapFloat32Uint32.Set("2.71828:2")
 	if varMapFloat32Uint32.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat32Uint32,
@@ -2294,7 +2295,7 @@ func TestParseMapFloat32Uint32(t *testing.T) {
 func TestParseMapFloat32Uint64(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Uint64Value{}).Elem()
 	var varMapFloat32Uint64 = new(mapFloat32Uint64Value)
-	Var(varMapFloat32Uint64, "varMapFloat32Uint64", "Use mapFloat32Uint64")
+	Var(varMapFloat32Uint64, "varMapFloat32Uint64", "Use mapFloat32Uint64", false, false)
 	varMapFloat32Uint64.Set("2.71828:2")
 	if varMapFloat32Uint64.String() != "2.71828:2" {
 		t.Fatalf("%v %v %v", varMapFloat32Uint64,
@@ -2306,7 +2307,7 @@ func TestParseMapFloat32Uint64(t *testing.T) {
 func TestParseMapFloat32Float64(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Float64Value{}).Elem()
 	var varMapFloat32Float64 = new(mapFloat32Float64Value)
-	Var(varMapFloat32Float64, "varMapFloat32Float64", "Use mapFloat32Float64")
+	Var(varMapFloat32Float64, "varMapFloat32Float64", "Use mapFloat32Float64", false, false)
 	varMapFloat32Float64.Set("2.71828:2.71828")
 	if varMapFloat32Float64.String() != "2.71828:2.71828" {
 		t.Fatalf("%v %v %v", varMapFloat32Float64,
@@ -2318,7 +2319,7 @@ func TestParseMapFloat32Float64(t *testing.T) {
 func TestParseMapFloat32Float32(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32Float32Value{}).Elem()
 	var varMapFloat32Float32 = new(mapFloat32Float32Value)
-	Var(varMapFloat32Float32, "varMapFloat32Float32", "Use mapFloat32Float32")
+	Var(varMapFloat32Float32, "varMapFloat32Float32", "Use mapFloat32Float32", false, false)
 	varMapFloat32Float32.Set("2.71828:2.71828")
 	if varMapFloat32Float32.String() != "2.71828:2.71828" {
 		t.Fatalf("%v %v %v", varMapFloat32Float32,
@@ -2330,7 +2331,7 @@ func TestParseMapFloat32Float32(t *testing.T) {
 func TestParseMapFloat32Bool(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32BoolValue{}).Elem()
 	var varMapFloat32Bool = new(mapFloat32BoolValue)
-	Var(varMapFloat32Bool, "varMapFloat32Bool", "Use mapFloat32Bool")
+	Var(varMapFloat32Bool, "varMapFloat32Bool", "Use mapFloat32Bool", false, false)
 	varMapFloat32Bool.Set("2.71828:true")
 	if varMapFloat32Bool.String() != "2.71828:true" {
 		t.Fatalf("%v %v %v", varMapFloat32Bool,
@@ -2342,7 +2343,7 @@ func TestParseMapFloat32Bool(t *testing.T) {
 func TestParseMapFloat32String(t *testing.T) {
 	// T := reflect.TypeOf(mapFloat32StringValue{}).Elem()
 	var varMapFloat32String = new(mapFloat32StringValue)
-	Var(varMapFloat32String, "varMapFloat32String", "Use mapFloat32String")
+	Var(varMapFloat32String, "varMapFloat32String", "Use mapFloat32String", false, false)
 	varMapFloat32String.Set("2.71828:one")
 	if varMapFloat32String.String() != "2.71828:one" {
 		t.Fatalf("%v %v %v", varMapFloat32String,
@@ -2354,7 +2355,7 @@ func TestParseMapFloat32String(t *testing.T) {
 func TestParseMapBoolDuration(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolDurationValue{}).Elem()
 	var varMapBoolDuration = new(mapBoolDurationValue)
-	Var(varMapBoolDuration, "varMapBoolDuration", "Use mapBoolDuration")
+	Var(varMapBoolDuration, "varMapBoolDuration", "Use mapBoolDuration", false, false)
 	varMapBoolDuration.Set("true:1h2m3s")
 	if varMapBoolDuration.String() != "true:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapBoolDuration,
@@ -2366,7 +2367,7 @@ func TestParseMapBoolDuration(t *testing.T) {
 func TestParseMapBoolInt(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolIntValue{}).Elem()
 	var varMapBoolInt = new(mapBoolIntValue)
-	Var(varMapBoolInt, "varMapBoolInt", "Use mapBoolInt")
+	Var(varMapBoolInt, "varMapBoolInt", "Use mapBoolInt", false, false)
 	varMapBoolInt.Set("true:-1")
 	if varMapBoolInt.String() != "true:-1" {
 		t.Fatalf("%v %v %v", varMapBoolInt,
@@ -2378,7 +2379,7 @@ func TestParseMapBoolInt(t *testing.T) {
 func TestParseMapBoolInt8(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolInt8Value{}).Elem()
 	var varMapBoolInt8 = new(mapBoolInt8Value)
-	Var(varMapBoolInt8, "varMapBoolInt8", "Use mapBoolInt8")
+	Var(varMapBoolInt8, "varMapBoolInt8", "Use mapBoolInt8", false, false)
 	varMapBoolInt8.Set("true:-1")
 	if varMapBoolInt8.String() != "true:-1" {
 		t.Fatalf("%v %v %v", varMapBoolInt8,
@@ -2390,7 +2391,7 @@ func TestParseMapBoolInt8(t *testing.T) {
 func TestParseMapBoolInt16(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolInt16Value{}).Elem()
 	var varMapBoolInt16 = new(mapBoolInt16Value)
-	Var(varMapBoolInt16, "varMapBoolInt16", "Use mapBoolInt16")
+	Var(varMapBoolInt16, "varMapBoolInt16", "Use mapBoolInt16", false, false)
 	varMapBoolInt16.Set("true:-1")
 	if varMapBoolInt16.String() != "true:-1" {
 		t.Fatalf("%v %v %v", varMapBoolInt16,
@@ -2402,7 +2403,7 @@ func TestParseMapBoolInt16(t *testing.T) {
 func TestParseMapBoolInt32(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolInt32Value{}).Elem()
 	var varMapBoolInt32 = new(mapBoolInt32Value)
-	Var(varMapBoolInt32, "varMapBoolInt32", "Use mapBoolInt32")
+	Var(varMapBoolInt32, "varMapBoolInt32", "Use mapBoolInt32", false, false)
 	varMapBoolInt32.Set("true:-1")
 	if varMapBoolInt32.String() != "true:-1" {
 		t.Fatalf("%v %v %v", varMapBoolInt32,
@@ -2414,7 +2415,7 @@ func TestParseMapBoolInt32(t *testing.T) {
 func TestParseMapBoolInt64(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolInt64Value{}).Elem()
 	var varMapBoolInt64 = new(mapBoolInt64Value)
-	Var(varMapBoolInt64, "varMapBoolInt64", "Use mapBoolInt64")
+	Var(varMapBoolInt64, "varMapBoolInt64", "Use mapBoolInt64", false, false)
 	varMapBoolInt64.Set("true:-1")
 	if varMapBoolInt64.String() != "true:-1" {
 		t.Fatalf("%v %v %v", varMapBoolInt64,
@@ -2426,7 +2427,7 @@ func TestParseMapBoolInt64(t *testing.T) {
 func TestParseMapBoolUint(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolUintValue{}).Elem()
 	var varMapBoolUint = new(mapBoolUintValue)
-	Var(varMapBoolUint, "varMapBoolUint", "Use mapBoolUint")
+	Var(varMapBoolUint, "varMapBoolUint", "Use mapBoolUint", false, false)
 	varMapBoolUint.Set("true:2")
 	if varMapBoolUint.String() != "true:2" {
 		t.Fatalf("%v %v %v", varMapBoolUint,
@@ -2438,7 +2439,7 @@ func TestParseMapBoolUint(t *testing.T) {
 func TestParseMapBoolUint8(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolUint8Value{}).Elem()
 	var varMapBoolUint8 = new(mapBoolUint8Value)
-	Var(varMapBoolUint8, "varMapBoolUint8", "Use mapBoolUint8")
+	Var(varMapBoolUint8, "varMapBoolUint8", "Use mapBoolUint8", false, false)
 	varMapBoolUint8.Set("true:2")
 	if varMapBoolUint8.String() != "true:2" {
 		t.Fatalf("%v %v %v", varMapBoolUint8,
@@ -2450,7 +2451,7 @@ func TestParseMapBoolUint8(t *testing.T) {
 func TestParseMapBoolUint16(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolUint16Value{}).Elem()
 	var varMapBoolUint16 = new(mapBoolUint16Value)
-	Var(varMapBoolUint16, "varMapBoolUint16", "Use mapBoolUint16")
+	Var(varMapBoolUint16, "varMapBoolUint16", "Use mapBoolUint16", false, false)
 	varMapBoolUint16.Set("true:2")
 	if varMapBoolUint16.String() != "true:2" {
 		t.Fatalf("%v %v %v", varMapBoolUint16,
@@ -2462,7 +2463,7 @@ func TestParseMapBoolUint16(t *testing.T) {
 func TestParseMapBoolUint32(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolUint32Value{}).Elem()
 	var varMapBoolUint32 = new(mapBoolUint32Value)
-	Var(varMapBoolUint32, "varMapBoolUint32", "Use mapBoolUint32")
+	Var(varMapBoolUint32, "varMapBoolUint32", "Use mapBoolUint32", false, false)
 	varMapBoolUint32.Set("true:2")
 	if varMapBoolUint32.String() != "true:2" {
 		t.Fatalf("%v %v %v", varMapBoolUint32,
@@ -2474,7 +2475,7 @@ func TestParseMapBoolUint32(t *testing.T) {
 func TestParseMapBoolUint64(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolUint64Value{}).Elem()
 	var varMapBoolUint64 = new(mapBoolUint64Value)
-	Var(varMapBoolUint64, "varMapBoolUint64", "Use mapBoolUint64")
+	Var(varMapBoolUint64, "varMapBoolUint64", "Use mapBoolUint64", false, false)
 	varMapBoolUint64.Set("true:2")
 	if varMapBoolUint64.String() != "true:2" {
 		t.Fatalf("%v %v %v", varMapBoolUint64,
@@ -2486,7 +2487,7 @@ func TestParseMapBoolUint64(t *testing.T) {
 func TestParseMapBoolFloat64(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolFloat64Value{}).Elem()
 	var varMapBoolFloat64 = new(mapBoolFloat64Value)
-	Var(varMapBoolFloat64, "varMapBoolFloat64", "Use mapBoolFloat64")
+	Var(varMapBoolFloat64, "varMapBoolFloat64", "Use mapBoolFloat64", false, false)
 	varMapBoolFloat64.Set("true:2.71828")
 	if varMapBoolFloat64.String() != "true:2.71828" {
 		t.Fatalf("%v %v %v", varMapBoolFloat64,
@@ -2498,7 +2499,7 @@ func TestParseMapBoolFloat64(t *testing.T) {
 func TestParseMapBoolFloat32(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolFloat32Value{}).Elem()
 	var varMapBoolFloat32 = new(mapBoolFloat32Value)
-	Var(varMapBoolFloat32, "varMapBoolFloat32", "Use mapBoolFloat32")
+	Var(varMapBoolFloat32, "varMapBoolFloat32", "Use mapBoolFloat32", false, false)
 	varMapBoolFloat32.Set("true:2.71828")
 	if varMapBoolFloat32.String() != "true:2.71828" {
 		t.Fatalf("%v %v %v", varMapBoolFloat32,
@@ -2510,7 +2511,7 @@ func TestParseMapBoolFloat32(t *testing.T) {
 func TestParseMapBoolBool(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolBoolValue{}).Elem()
 	var varMapBoolBool = new(mapBoolBoolValue)
-	Var(varMapBoolBool, "varMapBoolBool", "Use mapBoolBool")
+	Var(varMapBoolBool, "varMapBoolBool", "Use mapBoolBool", false, false)
 	varMapBoolBool.Set("true:true")
 	if varMapBoolBool.String() != "true:true" {
 		t.Fatalf("%v %v %v", varMapBoolBool,
@@ -2522,7 +2523,7 @@ func TestParseMapBoolBool(t *testing.T) {
 func TestParseMapBoolString(t *testing.T) {
 	// T := reflect.TypeOf(mapBoolStringValue{}).Elem()
 	var varMapBoolString = new(mapBoolStringValue)
-	Var(varMapBoolString, "varMapBoolString", "Use mapBoolString")
+	Var(varMapBoolString, "varMapBoolString", "Use mapBoolString", false, false)
 	varMapBoolString.Set("true:one")
 	if varMapBoolString.String() != "true:one" {
 		t.Fatalf("%v %v %v", varMapBoolString,
@@ -2534,7 +2535,7 @@ func TestParseMapBoolString(t *testing.T) {
 func TestParseMapStringDuration(t *testing.T) {
 	// T := reflect.TypeOf(mapStringDurationValue{}).Elem()
 	var varMapStringDuration = new(mapStringDurationValue)
-	Var(varMapStringDuration, "varMapStringDuration", "Use mapStringDuration")
+	Var(varMapStringDuration, "varMapStringDuration", "Use mapStringDuration", false, false)
 	varMapStringDuration.Set("one:1h2m3s")
 	if varMapStringDuration.String() != "one:1h2m3s" {
 		t.Fatalf("%v %v %v", varMapStringDuration,
@@ -2546,7 +2547,7 @@ func TestParseMapStringDuration(t *testing.T) {
 func TestParseMapStringInt(t *testing.T) {
 	// T := reflect.TypeOf(mapStringIntValue{}).Elem()
 	var varMapStringInt = new(mapStringIntValue)
-	Var(varMapStringInt, "varMapStringInt", "Use mapStringInt")
+	Var(varMapStringInt, "varMapStringInt", "Use mapStringInt", false, false)
 	varMapStringInt.Set("one:-1")
 	if varMapStringInt.String() != "one:-1" {
 		t.Fatalf("%v %v %v", varMapStringInt,
@@ -2558,7 +2559,7 @@ func TestParseMapStringInt(t *testing.T) {
 func TestParseMapStringInt8(t *testing.T) {
 	// T := reflect.TypeOf(mapStringInt8Value{}).Elem()
 	var varMapStringInt8 = new(mapStringInt8Value)
-	Var(varMapStringInt8, "varMapStringInt8", "Use mapStringInt8")
+	Var(varMapStringInt8, "varMapStringInt8", "Use mapStringInt8", false, false)
 	varMapStringInt8.Set("one:-1")
 	if varMapStringInt8.String() != "one:-1" {
 		t.Fatalf("%v %v %v", varMapStringInt8,
@@ -2570,7 +2571,7 @@ func TestParseMapStringInt8(t *testing.T) {
 func TestParseMapStringInt16(t *testing.T) {
 	// T := reflect.TypeOf(mapStringInt16Value{}).Elem()
 	var varMapStringInt16 = new(mapStringInt16Value)
-	Var(varMapStringInt16, "varMapStringInt16", "Use mapStringInt16")
+	Var(varMapStringInt16, "varMapStringInt16", "Use mapStringInt16", false, false)
 	varMapStringInt16.Set("one:-1")
 	if varMapStringInt16.String() != "one:-1" {
 		t.Fatalf("%v %v %v", varMapStringInt16,
@@ -2582,7 +2583,7 @@ func TestParseMapStringInt16(t *testing.T) {
 func TestParseMapStringInt32(t *testing.T) {
 	// T := reflect.TypeOf(mapStringInt32Value{}).Elem()
 	var varMapStringInt32 = new(mapStringInt32Value)
-	Var(varMapStringInt32, "varMapStringInt32", "Use mapStringInt32")
+	Var(varMapStringInt32, "varMapStringInt32", "Use mapStringInt32", false, false)
 	varMapStringInt32.Set("one:-1")
 	if varMapStringInt32.String() != "one:-1" {
 		t.Fatalf("%v %v %v", varMapStringInt32,
@@ -2594,7 +2595,7 @@ func TestParseMapStringInt32(t *testing.T) {
 func TestParseMapStringInt64(t *testing.T) {
 	// T := reflect.TypeOf(mapStringInt64Value{}).Elem()
 	var varMapStringInt64 = new(mapStringInt64Value)
-	Var(varMapStringInt64, "varMapStringInt64", "Use mapStringInt64")
+	Var(varMapStringInt64, "varMapStringInt64", "Use mapStringInt64", false, false)
 	varMapStringInt64.Set("one:-1")
 	if varMapStringInt64.String() != "one:-1" {
 		t.Fatalf("%v %v %v", varMapStringInt64,
@@ -2606,7 +2607,7 @@ func TestParseMapStringInt64(t *testing.T) {
 func TestParseMapStringUint(t *testing.T) {
 	// T := reflect.TypeOf(mapStringUintValue{}).Elem()
 	var varMapStringUint = new(mapStringUintValue)
-	Var(varMapStringUint, "varMapStringUint", "Use mapStringUint")
+	Var(varMapStringUint, "varMapStringUint", "Use mapStringUint", false, false)
 	varMapStringUint.Set("one:2")
 	if varMapStringUint.String() != "one:2" {
 		t.Fatalf("%v %v %v", varMapStringUint,
@@ -2618,7 +2619,7 @@ func TestParseMapStringUint(t *testing.T) {
 func TestParseMapStringUint8(t *testing.T) {
 	// T := reflect.TypeOf(mapStringUint8Value{}).Elem()
 	var varMapStringUint8 = new(mapStringUint8Value)
-	Var(varMapStringUint8, "varMapStringUint8", "Use mapStringUint8")
+	Var(varMapStringUint8, "varMapStringUint8", "Use mapStringUint8", false, false)
 	varMapStringUint8.Set("one:2")
 	if varMapStringUint8.String() != "one:2" {
 		t.Fatalf("%v %v %v", varMapStringUint8,
@@ -2630,7 +2631,7 @@ func TestParseMapStringUint8(t *testing.T) {
 func TestParseMapStringUint16(t *testing.T) {
 	// T := reflect.TypeOf(mapStringUint16Value{}).Elem()
 	var varMapStringUint16 = new(mapStringUint16Value)
-	Var(varMapStringUint16, "varMapStringUint16", "Use mapStringUint16")
+	Var(varMapStringUint16, "varMapStringUint16", "Use mapStringUint16", false, false)
 	varMapStringUint16.Set("one:2")
 	if varMapStringUint16.String() != "one:2" {
 		t.Fatalf("%v %v %v", varMapStringUint16,
@@ -2642,7 +2643,7 @@ func TestParseMapStringUint16(t *testing.T) {
 func TestParseMapStringUint32(t *testing.T) {
 	// T := reflect.TypeOf(mapStringUint32Value{}).Elem()
 	var varMapStringUint32 = new(mapStringUint32Value)
-	Var(varMapStringUint32, "varMapStringUint32", "Use mapStringUint32")
+	Var(varMapStringUint32, "varMapStringUint32", "Use mapStringUint32", false, false)
 	varMapStringUint32.Set("one:2")
 	if varMapStringUint32.String() != "one:2" {
 		t.Fatalf("%v %v %v", varMapStringUint32,
@@ -2654,7 +2655,7 @@ func TestParseMapStringUint32(t *testing.T) {
 func TestParseMapStringUint64(t *testing.T) {
 	// T := reflect.TypeOf(mapStringUint64Value{}).Elem()
 	var varMapStringUint64 = new(mapStringUint64Value)
-	Var(varMapStringUint64, "varMapStringUint64", "Use mapStringUint64")
+	Var(varMapStringUint64, "varMapStringUint64", "Use mapStringUint64", false, false)
 	varMapStringUint64.Set("one:2")
 	if varMapStringUint64.String() != "one:2" {
 		t.Fatalf("%v %v %v", varMapStringUint64,
@@ -2666,7 +2667,7 @@ func TestParseMapStringUint64(t *testing.T) {
 func TestParseMapStringFloat64(t *testing.T) {
 	// T := reflect.TypeOf(mapStringFloat64Value{}).Elem()
 	var varMapStringFloat64 = new(mapStringFloat64Value)
-	Var(varMapStringFloat64, "varMapStringFloat64", "Use mapStringFloat64")
+	Var(varMapStringFloat64, "varMapStringFloat64", "Use mapStringFloat64", false, false)
 	varMapStringFloat64.Set("one:2.71828")
 	if varMapStringFloat64.String() != "one:2.71828" {
 		t.Fatalf("%v %v %v", varMapStringFloat64,
@@ -2678,7 +2679,7 @@ func TestParseMapStringFloat64(t *testing.T) {
 func TestParseMapStringFloat32(t *testing.T) {
 	// T := reflect.TypeOf(mapStringFloat32Value{}).Elem()
 	var varMapStringFloat32 = new(mapStringFloat32Value)
-	Var(varMapStringFloat32, "varMapStringFloat32", "Use mapStringFloat32")
+	Var(varMapStringFloat32, "varMapStringFloat32", "Use mapStringFloat32", false, false)
 	varMapStringFloat32.Set("one:2.71828")
 	if varMapStringFloat32.String() != "one:2.71828" {
 		t.Fatalf("%v %v %v", varMapStringFloat32,
@@ -2690,7 +2691,7 @@ func TestParseMapStringFloat32(t *testing.T) {
 func TestParseMapStringBool(t *testing.T) {
 	// T := reflect.TypeOf(mapStringBoolValue{}).Elem()
 	var varMapStringBool = new(mapStringBoolValue)
-	Var(varMapStringBool, "varMapStringBool", "Use mapStringBool")
+	Var(varMapStringBool, "varMapStringBool", "Use mapStringBool", false, false)
 	varMapStringBool.Set("one:true")
 	if varMapStringBool.String() != "one:true" {
 		t.Fatalf("%v %v %v", varMapStringBool,
@@ -2702,7 +2703,7 @@ func TestParseMapStringBool(t *testing.T) {
 func TestParseMapStringString(t *testing.T) {
 	// T := reflect.TypeOf(mapStringStringValue{}).Elem()
 	var varMapStringString = new(mapStringStringValue)
-	Var(varMapStringString, "varMapStringString", "Use mapStringString")
+	Var(varMapStringString, "varMapStringString", "Use mapStringString", false, false)
 	varMapStringString.Set("one:one")
 	if varMapStringString.String() != "one:one" {
 		t.Fatalf("%v %v %v", varMapStringString,

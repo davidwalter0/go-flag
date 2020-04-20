@@ -2,7 +2,7 @@ func TestParseSlice{{.Type}}(t *testing.T) {
 	T := reflect.TypeOf({{.SliceTypeValueName}}{}).Elem()
 
 	var slice{{.Type}} = new({{.SliceTypeValueName}})
-	Var(slice{{.Type}}, "slice{{.Type}}", "use Slice{{.Type}}")
+	Var(slice{{.Type}}, "slice{{.Type}}", "use Slice{{.Type}}", false, false)
   switch T.Kind() {
   case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
     {{ if (eq "time.Duration" .CastTypeName) -}}

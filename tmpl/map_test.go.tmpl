@@ -2,7 +2,7 @@
 func TestParse{{.MapSetterTypeName|capitalize}}(t *testing.T) {
 	// T := reflect.TypeOf({{.MapSetterTypeNameValue}}{}).Elem()
 	var var{{.MapSetterTypeName|capitalize}} = new({{.MapSetterTypeNameValue}})
-	Var(var{{.MapSetterTypeName|capitalize}}, "var{{.MapSetterTypeName|capitalize}}", "Use {{.MapSetterTypeName}}")
+	Var(var{{.MapSetterTypeName|capitalize}}, "var{{.MapSetterTypeName|capitalize}}", "Use {{.MapSetterTypeName}}", false, false)
   var{{.MapSetterTypeName|capitalize}}.Set("{{.MapInit}}")
   if var{{.MapSetterTypeName|capitalize}}.String() != "{{.MapInit}}" {
     t.Fatalf("%v %v %v", var{{.MapSetterTypeName|capitalize}},

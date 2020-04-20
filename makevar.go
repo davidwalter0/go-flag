@@ -13,7 +13,7 @@ import (
 // Special case time.Duration
 
 // MakeVar type cast to type with interface matching Set, Value
-func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
+func MakeVar(addr interface{}, name, defaultValue, usage, override string, required, isset bool) {
 	defaultValue = strings.TrimSpace(defaultValue)
 	override = strings.TrimSpace(override)
 	switch ptr := addr.(type) {
@@ -25,7 +25,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationDurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationDurationValue %T %v\n", ptr, err))
@@ -39,7 +39,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationIntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationIntValue %T %v\n", ptr, err))
@@ -53,7 +53,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationInt8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationInt8Value %T %v\n", ptr, err))
@@ -67,7 +67,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationInt16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationInt16Value %T %v\n", ptr, err))
@@ -81,7 +81,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationInt32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationInt32Value %T %v\n", ptr, err))
@@ -95,7 +95,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationInt64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationInt64Value %T %v\n", ptr, err))
@@ -109,7 +109,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationUintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationUintValue %T %v\n", ptr, err))
@@ -123,7 +123,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationUint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationUint8Value %T %v\n", ptr, err))
@@ -137,7 +137,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationUint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationUint16Value %T %v\n", ptr, err))
@@ -151,7 +151,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationUint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationUint32Value %T %v\n", ptr, err))
@@ -165,7 +165,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationUint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationUint64Value %T %v\n", ptr, err))
@@ -179,7 +179,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationFloat64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationFloat64Value %T %v\n", ptr, err))
@@ -193,7 +193,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationFloat32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationFloat32Value %T %v\n", ptr, err))
@@ -207,7 +207,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationBoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationBoolValue %T %v\n", ptr, err))
@@ -221,7 +221,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapDurationStringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapDurationStringValue %T %v\n", ptr, err))
@@ -235,7 +235,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntDurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntDurationValue %T %v\n", ptr, err))
@@ -249,7 +249,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntIntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntIntValue %T %v\n", ptr, err))
@@ -263,7 +263,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntInt8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntInt8Value %T %v\n", ptr, err))
@@ -277,7 +277,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntInt16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntInt16Value %T %v\n", ptr, err))
@@ -291,7 +291,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntInt32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntInt32Value %T %v\n", ptr, err))
@@ -305,7 +305,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntInt64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntInt64Value %T %v\n", ptr, err))
@@ -319,7 +319,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntUintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntUintValue %T %v\n", ptr, err))
@@ -333,7 +333,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntUint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntUint8Value %T %v\n", ptr, err))
@@ -347,7 +347,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntUint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntUint16Value %T %v\n", ptr, err))
@@ -361,7 +361,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntUint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntUint32Value %T %v\n", ptr, err))
@@ -375,7 +375,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntUint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntUint64Value %T %v\n", ptr, err))
@@ -389,7 +389,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntFloat64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntFloat64Value %T %v\n", ptr, err))
@@ -403,7 +403,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntFloat32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntFloat32Value %T %v\n", ptr, err))
@@ -417,7 +417,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntBoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntBoolValue %T %v\n", ptr, err))
@@ -431,7 +431,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapIntStringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapIntStringValue %T %v\n", ptr, err))
@@ -445,7 +445,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8DurationValue %T %v\n", ptr, err))
@@ -459,7 +459,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8IntValue %T %v\n", ptr, err))
@@ -473,7 +473,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Int8Value %T %v\n", ptr, err))
@@ -487,7 +487,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Int16Value %T %v\n", ptr, err))
@@ -501,7 +501,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Int32Value %T %v\n", ptr, err))
@@ -515,7 +515,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Int64Value %T %v\n", ptr, err))
@@ -529,7 +529,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8UintValue %T %v\n", ptr, err))
@@ -543,7 +543,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Uint8Value %T %v\n", ptr, err))
@@ -557,7 +557,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Uint16Value %T %v\n", ptr, err))
@@ -571,7 +571,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Uint32Value %T %v\n", ptr, err))
@@ -585,7 +585,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Uint64Value %T %v\n", ptr, err))
@@ -599,7 +599,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Float64Value %T %v\n", ptr, err))
@@ -613,7 +613,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8Float32Value %T %v\n", ptr, err))
@@ -627,7 +627,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8BoolValue %T %v\n", ptr, err))
@@ -641,7 +641,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt8StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt8StringValue %T %v\n", ptr, err))
@@ -655,7 +655,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16DurationValue %T %v\n", ptr, err))
@@ -669,7 +669,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16IntValue %T %v\n", ptr, err))
@@ -683,7 +683,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Int8Value %T %v\n", ptr, err))
@@ -697,7 +697,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Int16Value %T %v\n", ptr, err))
@@ -711,7 +711,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Int32Value %T %v\n", ptr, err))
@@ -725,7 +725,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Int64Value %T %v\n", ptr, err))
@@ -739,7 +739,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16UintValue %T %v\n", ptr, err))
@@ -753,7 +753,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Uint8Value %T %v\n", ptr, err))
@@ -767,7 +767,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Uint16Value %T %v\n", ptr, err))
@@ -781,7 +781,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Uint32Value %T %v\n", ptr, err))
@@ -795,7 +795,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Uint64Value %T %v\n", ptr, err))
@@ -809,7 +809,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Float64Value %T %v\n", ptr, err))
@@ -823,7 +823,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16Float32Value %T %v\n", ptr, err))
@@ -837,7 +837,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16BoolValue %T %v\n", ptr, err))
@@ -851,7 +851,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt16StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt16StringValue %T %v\n", ptr, err))
@@ -865,7 +865,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32DurationValue %T %v\n", ptr, err))
@@ -879,7 +879,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32IntValue %T %v\n", ptr, err))
@@ -893,7 +893,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Int8Value %T %v\n", ptr, err))
@@ -907,7 +907,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Int16Value %T %v\n", ptr, err))
@@ -921,7 +921,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Int32Value %T %v\n", ptr, err))
@@ -935,7 +935,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Int64Value %T %v\n", ptr, err))
@@ -949,7 +949,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32UintValue %T %v\n", ptr, err))
@@ -963,7 +963,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Uint8Value %T %v\n", ptr, err))
@@ -977,7 +977,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Uint16Value %T %v\n", ptr, err))
@@ -991,7 +991,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Uint32Value %T %v\n", ptr, err))
@@ -1005,7 +1005,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Uint64Value %T %v\n", ptr, err))
@@ -1019,7 +1019,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Float64Value %T %v\n", ptr, err))
@@ -1033,7 +1033,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32Float32Value %T %v\n", ptr, err))
@@ -1047,7 +1047,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32BoolValue %T %v\n", ptr, err))
@@ -1061,7 +1061,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt32StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt32StringValue %T %v\n", ptr, err))
@@ -1075,7 +1075,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64DurationValue %T %v\n", ptr, err))
@@ -1089,7 +1089,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64IntValue %T %v\n", ptr, err))
@@ -1103,7 +1103,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Int8Value %T %v\n", ptr, err))
@@ -1117,7 +1117,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Int16Value %T %v\n", ptr, err))
@@ -1131,7 +1131,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Int32Value %T %v\n", ptr, err))
@@ -1145,7 +1145,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Int64Value %T %v\n", ptr, err))
@@ -1159,7 +1159,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64UintValue %T %v\n", ptr, err))
@@ -1173,7 +1173,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Uint8Value %T %v\n", ptr, err))
@@ -1187,7 +1187,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Uint16Value %T %v\n", ptr, err))
@@ -1201,7 +1201,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Uint32Value %T %v\n", ptr, err))
@@ -1215,7 +1215,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Uint64Value %T %v\n", ptr, err))
@@ -1229,7 +1229,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Float64Value %T %v\n", ptr, err))
@@ -1243,7 +1243,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64Float32Value %T %v\n", ptr, err))
@@ -1257,7 +1257,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64BoolValue %T %v\n", ptr, err))
@@ -1271,7 +1271,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapInt64StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapInt64StringValue %T %v\n", ptr, err))
@@ -1285,7 +1285,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintDurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintDurationValue %T %v\n", ptr, err))
@@ -1299,7 +1299,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintIntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintIntValue %T %v\n", ptr, err))
@@ -1313,7 +1313,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintInt8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintInt8Value %T %v\n", ptr, err))
@@ -1327,7 +1327,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintInt16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintInt16Value %T %v\n", ptr, err))
@@ -1341,7 +1341,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintInt32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintInt32Value %T %v\n", ptr, err))
@@ -1355,7 +1355,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintInt64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintInt64Value %T %v\n", ptr, err))
@@ -1369,7 +1369,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintUintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintUintValue %T %v\n", ptr, err))
@@ -1383,7 +1383,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintUint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintUint8Value %T %v\n", ptr, err))
@@ -1397,7 +1397,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintUint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintUint16Value %T %v\n", ptr, err))
@@ -1411,7 +1411,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintUint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintUint32Value %T %v\n", ptr, err))
@@ -1425,7 +1425,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintUint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintUint64Value %T %v\n", ptr, err))
@@ -1439,7 +1439,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintFloat64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintFloat64Value %T %v\n", ptr, err))
@@ -1453,7 +1453,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintFloat32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintFloat32Value %T %v\n", ptr, err))
@@ -1467,7 +1467,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintBoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintBoolValue %T %v\n", ptr, err))
@@ -1481,7 +1481,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUintStringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUintStringValue %T %v\n", ptr, err))
@@ -1495,7 +1495,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8DurationValue %T %v\n", ptr, err))
@@ -1509,7 +1509,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8IntValue %T %v\n", ptr, err))
@@ -1523,7 +1523,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Int8Value %T %v\n", ptr, err))
@@ -1537,7 +1537,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Int16Value %T %v\n", ptr, err))
@@ -1551,7 +1551,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Int32Value %T %v\n", ptr, err))
@@ -1565,7 +1565,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Int64Value %T %v\n", ptr, err))
@@ -1579,7 +1579,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8UintValue %T %v\n", ptr, err))
@@ -1593,7 +1593,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Uint8Value %T %v\n", ptr, err))
@@ -1607,7 +1607,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Uint16Value %T %v\n", ptr, err))
@@ -1621,7 +1621,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Uint32Value %T %v\n", ptr, err))
@@ -1635,7 +1635,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Uint64Value %T %v\n", ptr, err))
@@ -1649,7 +1649,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Float64Value %T %v\n", ptr, err))
@@ -1663,7 +1663,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8Float32Value %T %v\n", ptr, err))
@@ -1677,7 +1677,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8BoolValue %T %v\n", ptr, err))
@@ -1691,7 +1691,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint8StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint8StringValue %T %v\n", ptr, err))
@@ -1705,7 +1705,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16DurationValue %T %v\n", ptr, err))
@@ -1719,7 +1719,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16IntValue %T %v\n", ptr, err))
@@ -1733,7 +1733,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Int8Value %T %v\n", ptr, err))
@@ -1747,7 +1747,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Int16Value %T %v\n", ptr, err))
@@ -1761,7 +1761,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Int32Value %T %v\n", ptr, err))
@@ -1775,7 +1775,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Int64Value %T %v\n", ptr, err))
@@ -1789,7 +1789,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16UintValue %T %v\n", ptr, err))
@@ -1803,7 +1803,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Uint8Value %T %v\n", ptr, err))
@@ -1817,7 +1817,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Uint16Value %T %v\n", ptr, err))
@@ -1831,7 +1831,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Uint32Value %T %v\n", ptr, err))
@@ -1845,7 +1845,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Uint64Value %T %v\n", ptr, err))
@@ -1859,7 +1859,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Float64Value %T %v\n", ptr, err))
@@ -1873,7 +1873,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16Float32Value %T %v\n", ptr, err))
@@ -1887,7 +1887,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16BoolValue %T %v\n", ptr, err))
@@ -1901,7 +1901,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint16StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint16StringValue %T %v\n", ptr, err))
@@ -1915,7 +1915,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32DurationValue %T %v\n", ptr, err))
@@ -1929,7 +1929,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32IntValue %T %v\n", ptr, err))
@@ -1943,7 +1943,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Int8Value %T %v\n", ptr, err))
@@ -1957,7 +1957,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Int16Value %T %v\n", ptr, err))
@@ -1971,7 +1971,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Int32Value %T %v\n", ptr, err))
@@ -1985,7 +1985,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Int64Value %T %v\n", ptr, err))
@@ -1999,7 +1999,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32UintValue %T %v\n", ptr, err))
@@ -2013,7 +2013,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Uint8Value %T %v\n", ptr, err))
@@ -2027,7 +2027,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Uint16Value %T %v\n", ptr, err))
@@ -2041,7 +2041,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Uint32Value %T %v\n", ptr, err))
@@ -2055,7 +2055,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Uint64Value %T %v\n", ptr, err))
@@ -2069,7 +2069,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Float64Value %T %v\n", ptr, err))
@@ -2083,7 +2083,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32Float32Value %T %v\n", ptr, err))
@@ -2097,7 +2097,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32BoolValue %T %v\n", ptr, err))
@@ -2111,7 +2111,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint32StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint32StringValue %T %v\n", ptr, err))
@@ -2125,7 +2125,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64DurationValue %T %v\n", ptr, err))
@@ -2139,7 +2139,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64IntValue %T %v\n", ptr, err))
@@ -2153,7 +2153,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Int8Value %T %v\n", ptr, err))
@@ -2167,7 +2167,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Int16Value %T %v\n", ptr, err))
@@ -2181,7 +2181,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Int32Value %T %v\n", ptr, err))
@@ -2195,7 +2195,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Int64Value %T %v\n", ptr, err))
@@ -2209,7 +2209,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64UintValue %T %v\n", ptr, err))
@@ -2223,7 +2223,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Uint8Value %T %v\n", ptr, err))
@@ -2237,7 +2237,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Uint16Value %T %v\n", ptr, err))
@@ -2251,7 +2251,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Uint32Value %T %v\n", ptr, err))
@@ -2265,7 +2265,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Uint64Value %T %v\n", ptr, err))
@@ -2279,7 +2279,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Float64Value %T %v\n", ptr, err))
@@ -2293,7 +2293,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64Float32Value %T %v\n", ptr, err))
@@ -2307,7 +2307,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64BoolValue %T %v\n", ptr, err))
@@ -2321,7 +2321,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapUint64StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapUint64StringValue %T %v\n", ptr, err))
@@ -2335,7 +2335,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64DurationValue %T %v\n", ptr, err))
@@ -2349,7 +2349,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64IntValue %T %v\n", ptr, err))
@@ -2363,7 +2363,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Int8Value %T %v\n", ptr, err))
@@ -2377,7 +2377,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Int16Value %T %v\n", ptr, err))
@@ -2391,7 +2391,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Int32Value %T %v\n", ptr, err))
@@ -2405,7 +2405,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Int64Value %T %v\n", ptr, err))
@@ -2419,7 +2419,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64UintValue %T %v\n", ptr, err))
@@ -2433,7 +2433,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint8Value %T %v\n", ptr, err))
@@ -2447,7 +2447,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint16Value %T %v\n", ptr, err))
@@ -2461,7 +2461,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint32Value %T %v\n", ptr, err))
@@ -2475,7 +2475,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Uint64Value %T %v\n", ptr, err))
@@ -2489,7 +2489,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Float64Value %T %v\n", ptr, err))
@@ -2503,7 +2503,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64Float32Value %T %v\n", ptr, err))
@@ -2517,7 +2517,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64BoolValue %T %v\n", ptr, err))
@@ -2531,7 +2531,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat64StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat64StringValue %T %v\n", ptr, err))
@@ -2545,7 +2545,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32DurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32DurationValue %T %v\n", ptr, err))
@@ -2559,7 +2559,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32IntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32IntValue %T %v\n", ptr, err))
@@ -2573,7 +2573,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Int8Value %T %v\n", ptr, err))
@@ -2587,7 +2587,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Int16Value %T %v\n", ptr, err))
@@ -2601,7 +2601,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Int32Value %T %v\n", ptr, err))
@@ -2615,7 +2615,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Int64Value %T %v\n", ptr, err))
@@ -2629,7 +2629,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32UintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32UintValue %T %v\n", ptr, err))
@@ -2643,7 +2643,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint8Value %T %v\n", ptr, err))
@@ -2657,7 +2657,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint16Value %T %v\n", ptr, err))
@@ -2671,7 +2671,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint32Value %T %v\n", ptr, err))
@@ -2685,7 +2685,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Uint64Value %T %v\n", ptr, err))
@@ -2699,7 +2699,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Float64Value %T %v\n", ptr, err))
@@ -2713,7 +2713,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32Float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32Float32Value %T %v\n", ptr, err))
@@ -2727,7 +2727,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32BoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32BoolValue %T %v\n", ptr, err))
@@ -2741,7 +2741,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapFloat32StringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapFloat32StringValue %T %v\n", ptr, err))
@@ -2755,7 +2755,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolDurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolDurationValue %T %v\n", ptr, err))
@@ -2769,7 +2769,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolIntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolIntValue %T %v\n", ptr, err))
@@ -2783,7 +2783,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolInt8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolInt8Value %T %v\n", ptr, err))
@@ -2797,7 +2797,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolInt16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolInt16Value %T %v\n", ptr, err))
@@ -2811,7 +2811,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolInt32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolInt32Value %T %v\n", ptr, err))
@@ -2825,7 +2825,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolInt64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolInt64Value %T %v\n", ptr, err))
@@ -2839,7 +2839,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolUintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolUintValue %T %v\n", ptr, err))
@@ -2853,7 +2853,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolUint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolUint8Value %T %v\n", ptr, err))
@@ -2867,7 +2867,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolUint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolUint16Value %T %v\n", ptr, err))
@@ -2881,7 +2881,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolUint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolUint32Value %T %v\n", ptr, err))
@@ -2895,7 +2895,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolUint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolUint64Value %T %v\n", ptr, err))
@@ -2909,7 +2909,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolFloat64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolFloat64Value %T %v\n", ptr, err))
@@ -2923,7 +2923,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolFloat32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolFloat32Value %T %v\n", ptr, err))
@@ -2937,7 +2937,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolBoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolBoolValue %T %v\n", ptr, err))
@@ -2951,7 +2951,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapBoolStringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapBoolStringValue %T %v\n", ptr, err))
@@ -2965,7 +2965,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringDurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringDurationValue %T %v\n", ptr, err))
@@ -2979,7 +2979,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringIntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringIntValue %T %v\n", ptr, err))
@@ -2993,7 +2993,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringInt8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringInt8Value %T %v\n", ptr, err))
@@ -3007,7 +3007,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringInt16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringInt16Value %T %v\n", ptr, err))
@@ -3021,7 +3021,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringInt32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringInt32Value %T %v\n", ptr, err))
@@ -3035,7 +3035,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringInt64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringInt64Value %T %v\n", ptr, err))
@@ -3049,7 +3049,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringUintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringUintValue %T %v\n", ptr, err))
@@ -3063,7 +3063,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringUint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringUint8Value %T %v\n", ptr, err))
@@ -3077,7 +3077,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringUint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringUint16Value %T %v\n", ptr, err))
@@ -3091,7 +3091,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringUint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringUint32Value %T %v\n", ptr, err))
@@ -3105,7 +3105,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringUint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringUint64Value %T %v\n", ptr, err))
@@ -3119,7 +3119,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringFloat64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringFloat64Value %T %v\n", ptr, err))
@@ -3133,7 +3133,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringFloat32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringFloat32Value %T %v\n", ptr, err))
@@ -3147,7 +3147,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringBoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringBoolValue %T %v\n", ptr, err))
@@ -3161,7 +3161,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting mapStringStringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting mapStringStringValue %T %v\n", ptr, err))
@@ -3175,7 +3175,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting durationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting durationValue %T %v\n", ptr, err))
@@ -3189,7 +3189,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting intValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting intValue %T %v\n", ptr, err))
@@ -3203,7 +3203,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting int8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting int8Value %T %v\n", ptr, err))
@@ -3217,7 +3217,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting int16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting int16Value %T %v\n", ptr, err))
@@ -3231,7 +3231,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting int32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting int32Value %T %v\n", ptr, err))
@@ -3245,7 +3245,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting int64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting int64Value %T %v\n", ptr, err))
@@ -3259,7 +3259,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting uintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting uintValue %T %v\n", ptr, err))
@@ -3273,7 +3273,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting uint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting uint8Value %T %v\n", ptr, err))
@@ -3287,7 +3287,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting uint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting uint16Value %T %v\n", ptr, err))
@@ -3301,7 +3301,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting uint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting uint32Value %T %v\n", ptr, err))
@@ -3315,7 +3315,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting uint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting uint64Value %T %v\n", ptr, err))
@@ -3329,7 +3329,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting float64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting float64Value %T %v\n", ptr, err))
@@ -3343,7 +3343,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting float32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting float32Value %T %v\n", ptr, err))
@@ -3357,7 +3357,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting boolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting boolValue %T %v\n", ptr, err))
@@ -3371,7 +3371,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting stringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting stringValue %T %v\n", ptr, err))
@@ -3385,7 +3385,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceDurationValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceDurationValue %T %v\n", ptr, err))
@@ -3399,7 +3399,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceIntValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceIntValue %T %v\n", ptr, err))
@@ -3413,7 +3413,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceInt8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceInt8Value %T %v\n", ptr, err))
@@ -3427,7 +3427,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceInt16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceInt16Value %T %v\n", ptr, err))
@@ -3441,7 +3441,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceInt32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceInt32Value %T %v\n", ptr, err))
@@ -3455,7 +3455,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceInt64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceInt64Value %T %v\n", ptr, err))
@@ -3469,7 +3469,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceUintValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceUintValue %T %v\n", ptr, err))
@@ -3483,7 +3483,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceUint8Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceUint8Value %T %v\n", ptr, err))
@@ -3497,7 +3497,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceUint16Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceUint16Value %T %v\n", ptr, err))
@@ -3511,7 +3511,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceUint32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceUint32Value %T %v\n", ptr, err))
@@ -3525,7 +3525,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceUint64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceUint64Value %T %v\n", ptr, err))
@@ -3539,7 +3539,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceFloat64Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceFloat64Value %T %v\n", ptr, err))
@@ -3553,7 +3553,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceFloat32Value %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceFloat32Value %T %v\n", ptr, err))
@@ -3567,7 +3567,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceBoolValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceBoolValue %T %v\n", ptr, err))
@@ -3581,7 +3581,7 @@ func MakeVar(addr interface{}, name, defaultValue, usage, override string) {
 				panic(fmt.Sprintf("Error setting sliceStringValue %T %v\n", ptr, err))
 			}
 		}
-		CommandLine.Var(varType, name, usage)
+		CommandLine.Var(varType, name, usage, required, isset)
 		if len(override) > 0 {
 			if err := varType.Set(override); err != nil {
 				panic(fmt.Sprintf("Error setting sliceStringValue %T %v\n", ptr, err))

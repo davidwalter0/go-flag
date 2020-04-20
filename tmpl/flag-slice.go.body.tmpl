@@ -80,29 +80,29 @@ func (slc *{{.SliceTypeValueName}}) String() string {
 // slice{{.Type}}Var defines an slice flag with specified name,
 // default value, and usage string.  The argument p points to an slice
 // variable in which to store the value of the flag.
-func (f *FlagSet) slice{{.Type}}Var(p *{{.SliceTypeValueName}}, name string, value {{.SliceTypeValueName}}, usage string) {
-	f.Var(new{{.SliceTypeValueName}}(value, p), name, usage)
+func (f *FlagSet) slice{{.Type}}Var(p *{{.SliceTypeValueName}}, name string, value {{.SliceTypeValueName}}, usage string, required, isset bool) {
+	f.Var(new{{.SliceTypeValueName}}(value, p), name, usage, required, isset)
 }
 
 // slice{{.Type}}Var defines an slice flag with specified name,
 // default value, and usage string.  The argument p points to an slice
 // variable in which to store the value of the flag.
-func slice{{.Type}}Var(p *{{.SliceTypeValueName}}, name string, value {{.SliceTypeValueName}}, usage string) {
-	CommandLine.Var(new{{.SliceTypeValueName}}(value, p), name, usage)
+func slice{{.Type}}Var(p *{{.SliceTypeValueName}}, name string, value {{.SliceTypeValueName}}, usage string, required, isset bool) {
+	CommandLine.Var(new{{.SliceTypeValueName}}(value, p), name, usage, required, isset)
 }
 
 // slice{{.Type}} defines an slice flag with specified name, default value, and
 // usage string.  The return value is the address of an slice variable
 // that stores the value of the flag.
-func (f *FlagSet) slice{{.Type}}(name string, value {{.SliceTypeValueName}}, usage string) *{{.SliceTypeValueName}} {
+func (f *FlagSet) slice{{.Type}}(name string, value {{.SliceTypeValueName}}, usage string, required, isset bool) *{{.SliceTypeValueName}} {
 	p := new({{.SliceTypeValueName}})
-	f.slice{{.Type}}Var(p, name, value, usage)
+	f.slice{{.Type}}Var(p, name, value, usage, required, isset)
 	return p
 }
 
 // slice{{.Type}} defines an slice flag with specified name, default value, and
 // usage string.  The return value is the address of an slice variable
 // that stores the value of the flag.
-func slice{{.Type}}(name string, value {{.SliceTypeValueName}}, usage string) *{{.SliceTypeValueName}} {
-	return CommandLine.slice{{.Type}}(name, value, usage)
+func slice{{.Type}}(name string, value {{.SliceTypeValueName}}, usage string, required, isset bool) *{{.SliceTypeValueName}} {
+	return CommandLine.slice{{.Type}}(name, value, usage, required, isset)
 }

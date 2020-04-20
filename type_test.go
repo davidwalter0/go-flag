@@ -6,17 +6,18 @@ import (
 	"testing"
 )
 
-func init() {
+var _ = func() bool {
 	if false {
 		fmt.Println("")
 	}
-}
+	return true
+}()
 
 func TestParseSliceDuration(t *testing.T) {
 	T := reflect.TypeOf(sliceDurationValue{}).Elem()
 
 	var sliceDuration = new(sliceDurationValue)
-	Var(sliceDuration, "sliceDuration", "use SliceDuration")
+	Var(sliceDuration, "sliceDuration", "use SliceDuration", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceDuration.Set("1h2m3s,720h4m3s")
@@ -36,7 +37,7 @@ func TestParseSliceInt(t *testing.T) {
 	T := reflect.TypeOf(sliceIntValue{}).Elem()
 
 	var sliceInt = new(sliceIntValue)
-	Var(sliceInt, "sliceInt", "use SliceInt")
+	Var(sliceInt, "sliceInt", "use SliceInt", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceInt.Set("1,2,3")
@@ -56,7 +57,7 @@ func TestParseSliceInt8(t *testing.T) {
 	T := reflect.TypeOf(sliceInt8Value{}).Elem()
 
 	var sliceInt8 = new(sliceInt8Value)
-	Var(sliceInt8, "sliceInt8", "use SliceInt8")
+	Var(sliceInt8, "sliceInt8", "use SliceInt8", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceInt8.Set("1,2,3")
@@ -76,7 +77,7 @@ func TestParseSliceInt16(t *testing.T) {
 	T := reflect.TypeOf(sliceInt16Value{}).Elem()
 
 	var sliceInt16 = new(sliceInt16Value)
-	Var(sliceInt16, "sliceInt16", "use SliceInt16")
+	Var(sliceInt16, "sliceInt16", "use SliceInt16", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceInt16.Set("1,2,3")
@@ -96,7 +97,7 @@ func TestParseSliceInt32(t *testing.T) {
 	T := reflect.TypeOf(sliceInt32Value{}).Elem()
 
 	var sliceInt32 = new(sliceInt32Value)
-	Var(sliceInt32, "sliceInt32", "use SliceInt32")
+	Var(sliceInt32, "sliceInt32", "use SliceInt32", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceInt32.Set("1,2,3")
@@ -116,7 +117,7 @@ func TestParseSliceInt64(t *testing.T) {
 	T := reflect.TypeOf(sliceInt64Value{}).Elem()
 
 	var sliceInt64 = new(sliceInt64Value)
-	Var(sliceInt64, "sliceInt64", "use SliceInt64")
+	Var(sliceInt64, "sliceInt64", "use SliceInt64", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceInt64.Set("1,2,3")
@@ -136,7 +137,7 @@ func TestParseSliceUint(t *testing.T) {
 	T := reflect.TypeOf(sliceUintValue{}).Elem()
 
 	var sliceUint = new(sliceUintValue)
-	Var(sliceUint, "sliceUint", "use SliceUint")
+	Var(sliceUint, "sliceUint", "use SliceUint", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceUint.Set("1,2,3")
@@ -156,7 +157,7 @@ func TestParseSliceUint8(t *testing.T) {
 	T := reflect.TypeOf(sliceUint8Value{}).Elem()
 
 	var sliceUint8 = new(sliceUint8Value)
-	Var(sliceUint8, "sliceUint8", "use SliceUint8")
+	Var(sliceUint8, "sliceUint8", "use SliceUint8", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceUint8.Set("1,2,3")
@@ -176,7 +177,7 @@ func TestParseSliceUint16(t *testing.T) {
 	T := reflect.TypeOf(sliceUint16Value{}).Elem()
 
 	var sliceUint16 = new(sliceUint16Value)
-	Var(sliceUint16, "sliceUint16", "use SliceUint16")
+	Var(sliceUint16, "sliceUint16", "use SliceUint16", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceUint16.Set("1,2,3")
@@ -196,7 +197,7 @@ func TestParseSliceUint32(t *testing.T) {
 	T := reflect.TypeOf(sliceUint32Value{}).Elem()
 
 	var sliceUint32 = new(sliceUint32Value)
-	Var(sliceUint32, "sliceUint32", "use SliceUint32")
+	Var(sliceUint32, "sliceUint32", "use SliceUint32", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceUint32.Set("1,2,3")
@@ -216,7 +217,7 @@ func TestParseSliceUint64(t *testing.T) {
 	T := reflect.TypeOf(sliceUint64Value{}).Elem()
 
 	var sliceUint64 = new(sliceUint64Value)
-	Var(sliceUint64, "sliceUint64", "use SliceUint64")
+	Var(sliceUint64, "sliceUint64", "use SliceUint64", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceUint64.Set("1,2,3")
@@ -236,7 +237,7 @@ func TestParseSliceFloat64(t *testing.T) {
 	T := reflect.TypeOf(sliceFloat64Value{}).Elem()
 
 	var sliceFloat64 = new(sliceFloat64Value)
-	Var(sliceFloat64, "sliceFloat64", "use SliceFloat64")
+	Var(sliceFloat64, "sliceFloat64", "use SliceFloat64", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceFloat64.Set("1,2,3")
@@ -256,7 +257,7 @@ func TestParseSliceFloat32(t *testing.T) {
 	T := reflect.TypeOf(sliceFloat32Value{}).Elem()
 
 	var sliceFloat32 = new(sliceFloat32Value)
-	Var(sliceFloat32, "sliceFloat32", "use SliceFloat32")
+	Var(sliceFloat32, "sliceFloat32", "use SliceFloat32", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceFloat32.Set("1,2,3")
@@ -276,7 +277,7 @@ func TestParseSliceBool(t *testing.T) {
 	T := reflect.TypeOf(sliceBoolValue{}).Elem()
 
 	var sliceBool = new(sliceBoolValue)
-	Var(sliceBool, "sliceBool", "use SliceBool")
+	Var(sliceBool, "sliceBool", "use SliceBool", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceBool.Set("1,2,3")
@@ -296,7 +297,7 @@ func TestParseSliceString(t *testing.T) {
 	T := reflect.TypeOf(sliceStringValue{}).Elem()
 
 	var sliceString = new(sliceStringValue)
-	Var(sliceString, "sliceString", "use SliceString")
+	Var(sliceString, "sliceString", "use SliceString", false, false)
 	switch T.Kind() {
 	case reflect.Int8, reflect.Int16, reflect.Int, reflect.Int32, reflect.Int64:
 		sliceString.Set("1,2,3")
