@@ -17,17 +17,18 @@ func NonFlagOSArgs(skip int) []string {
 	var i = 1
 	// pre-read flag '-' and save non-flag and multicall args
 	for ; i < len(os.Args); i++ {
+		fmt.Printf("os.Args[%d] %s\n", i, os.Args[i])
 		isFlag := len(os.Args[i]) > 1 && os.Args[i][1] == '-'
 		if isFlag {
+			flagArgs = os.Args[i:]
 			break
 		}
-		if !isFlag && skip > 0 && i <= skip {
-			if multicall == nil {
-				multicall = []string{}
-			}
+		if skip > 0 && i <= skip {
 			multicall = append(multicall, os.Args[i])
+			fmt.Println("multicall", multicall)
 		} else {
 			nonFlagArgs = append(nonFlagArgs, os.Args[i])
+			fmt.Println("nonFlagArgs", nonFlagArgs)
 		}
 	}
 	// save flag args and post flag args
@@ -55,7 +56,8 @@ func WithMultiCallArgs(args int) {
 	}
 }
 
-func init() {
+// // func init() {
+var multicallSetup = func() bool {
 	var n int
 	v, found := LookupEnv("WITH_MULTICALL_ARGS")
 	if found {
@@ -67,4 +69,5 @@ func init() {
 		n = int(i)
 	}
 	MultiCallPrefixes = NonFlagOSArgs(n)
-}
+	return true
+}()
