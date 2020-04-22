@@ -17,7 +17,6 @@ func NonFlagOSArgs(skip int) []string {
 	var i = 1
 	// pre-read flag '-' and save non-flag and multicall args
 	for ; i < len(os.Args); i++ {
-		fmt.Printf("os.Args[%d] %s\n", i, os.Args[i])
 		isFlag := len(os.Args[i]) > 1 && os.Args[i][1] == '-'
 		if isFlag {
 			flagArgs = os.Args[i:]
@@ -25,10 +24,8 @@ func NonFlagOSArgs(skip int) []string {
 		}
 		if skip > 0 && i <= skip {
 			multicall = append(multicall, os.Args[i])
-			fmt.Println("multicall", multicall)
 		} else {
 			nonFlagArgs = append(nonFlagArgs, os.Args[i])
-			fmt.Println("nonFlagArgs", nonFlagArgs)
 		}
 	}
 	// save flag args and post flag args
